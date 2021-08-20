@@ -1,0 +1,15 @@
+.img1 {
+  background: url("http://hiladt.com/wordpress/wp-content/uploads/Light-Gray-Background-Png-light-grey-background-pattern-i31-114065.jpg");
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  height: 50%;
+}
+.img2 {
+  background: url("https://wallpaperbat.com/img/464721-free-download-light-yellow-wallpaper-7195x4297-for-your-desktop-mobile-tablet-explore-light-yellow-background-light-yellow-background-light-yellow-wallpaper-light-blue-and-yellow-wallpaper.jpg");
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  height: 50%;
+}

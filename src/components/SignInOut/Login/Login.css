@@ -1,0 +1,19 @@
+.login_card {
+  position: absolute;
+  z-index: 10;
+  left: 25%;
+  top: 26%;
+}
+.card_detail {
+  width: 25vw;
+}
+.card_img {
+  padding: 20px;
+  width: 25vw;
+}
+.card_img_svg {
+  position: absolute;
+  left: -3%;
+  width: 370px !important ;
+  height: 370px !important ;
+}
