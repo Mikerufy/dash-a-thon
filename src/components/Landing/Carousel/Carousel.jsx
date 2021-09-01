@@ -1,23 +1,16 @@
 import React from "react";
-import { Carousel,Button,ButtonGroup } from "react-bootstrap";
-import "./Carousel.css"
+import { Carousel, Button, ButtonGroup } from "react-bootstrap";
+import "./Carousel.css";
 export default function CarouselLayer() {
   return (
     <div>
-            <div  className="carousel_btns">
-                
-                <ButtonGroup size="large">
-                    <Button  className="carousel_btn" >Local business</Button>
-                    <Button className="carousel_btn" >Your business</Button>
-                
-                    </ButtonGroup>
-                
-               
-
-            </div>
+      <div className="carousel_btns">
+        <ButtonGroup size="large">
+          <Button className="carousel_btn">Local business</Button>
+          <Button className="carousel_btn">Your business</Button>
+        </ButtonGroup>
+      </div>
       <Carousel>
-
-     
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -55,8 +48,6 @@ export default function CarouselLayer() {
             </p>
           </Carousel.Caption>
         </Carousel.Item>
-
-
       </Carousel>
     </div>
   );
