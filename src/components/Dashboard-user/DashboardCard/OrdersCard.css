@@ -39,6 +39,10 @@
   display: flex;
   flex-direction: row;
 }
+.flex_row_container_col {
+  display: flex;
+  flex-direction: column;
+}
 .bco {
   margin-left: 1rem;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -10,6 +10,8 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import { CardActionArea } from '@material-ui/core';
 import { ImportantDevices } from '@material-ui/icons';
+import { getImg } from '../../../API';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,14 +43,28 @@ const useStyles = makeStyles((theme) => ({
 export default function RecentOrder() {
   const classes = useStyles();
   const theme = useTheme();
-
-  return (
-    <Card className={classes.root}>
-
-        <CardMedia
+  const [img,setImg]=useState([])
+  useEffect(()=>{
+    const fetchData= async ()=>{
+     const fetchBody=await getImg();
+    
+     setImg(fetchBody);
+  
+    }
+fetchData();        
+},[])
+  return (<>
+    
+     {
+       img.map((img,key)=>(
+       
+       <>
+       <Card className={classes.root}>
+      <CardMedia
+        key={img._id}
         className={classes.cover}
         component="img"
-        image="https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/63/2021/04/pick-and-mix-chocolate-and-sweet-cake-scaled-1.jpg"
+        image={img.imgUrl}
         title="Live from space album cover"
       />
 
@@ -62,9 +78,11 @@ export default function RecentOrder() {
           </p>
         </CardContent>
       </div>
-   
+      </Card>
+       </>
+       ))
+     }
+        
 
-    </Card>
-
-  );
+  </>);
 }

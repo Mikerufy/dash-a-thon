@@ -8,15 +8,22 @@ import {
 import Login from './components/SignInOut/Login/Login';
 import Signup from './components/SignInOut/Signup/Signup';
 import SignInOut from './components/SignInOut/SignInOut';
+import Analytics from './components/Dashboard-user/Analytics/Analytics';
+import Appbar from './components/Dashboard-user/Appbar/Appbar';
+import Addproduct from './components/Dashboard-user/AddProduct/Addproduct';
 function App() {
   return (
     <div className="App">
+      
       <Router>
+      <Appbar/>
         <Switch>
           <Switch>
             <Route exact path="/" ><Landing /></Route>
             <Route exact path="/sign-in-page" ><SignInOut/></Route>
             <Route exact path="/sign-up-page" ><Signup/></Route>
+            <Route exact path="/dashboard/user/analytics" ><Analytics/></Route>
+            <Route exact path="/dashboard/user/add-product" ><Addproduct/></Route>
           </Switch>
         </Switch>
       </Router>

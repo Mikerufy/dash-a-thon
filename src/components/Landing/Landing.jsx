@@ -8,7 +8,7 @@ export default function Landing() {
         <div>
               {/* <NavbarLayer /> */}
               {/* <OrdersCard/> */}
-              <Appbar/>
+             
               <Sidebar/>
 
         </div>

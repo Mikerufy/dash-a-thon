@@ -8,12 +8,26 @@ import Typography from '@material-ui/core/Typography';
 import "./OrdersCard.css";
 import AlarmIcon from '@material-ui/icons/Alarm';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import { IconButton } from '@material-ui/core';
+import { Grid, IconButton,Paper } from '@material-ui/core';
 import {  Line } from "react-chartjs-2"
 import LoopIcon from '@material-ui/icons/Loop';
 import RecentOrder from '../RecentOrders/RecentOrder';
 import BCO from "../BreadCrumbOrder/BCO"
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
 export default function OrdersCard() {
+  const classes = useStyles();
   return (<>
   <div className="flex_row_container">
   <div>
@@ -29,15 +43,15 @@ export default function OrdersCard() {
 
  
   <hr></hr>
-  <div className="whole_card">
 
-
-  <div className="left_card">
-  <div  className="left_card_orders">
-  <div>
-  <Card className="pending_orders card_padding" style={{textAlign:'center'}}>
-  <CardContent>
-       <div >
+  {/* ---------------------------------------------------------------------------------- */}
+  <Grid  container  spacing={3}>
+    
+  <Grid item xs={12} sm={6} spacing={6}>
+  <Grid container spacing={3}>
+        <Grid item xs>
+          <Paper className={classes.paper}>
+          <div >
          <IconButton size="medium" className="order_icon">
          <AlarmIcon  style={{fontSize:30}}/>
          </IconButton>
@@ -49,52 +63,50 @@ export default function OrdersCard() {
        <div className="number_order">
          10
        </div>
-
-       </CardContent>
-    </Card>
-
-  </div>
-  <div>
-  <Card className="completed_orders card_padding" style={{textAlign:'center'}}>
-  <CardContent>
-
-     <div >
+          </Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>
+          <div >
          <IconButton className="order_icon">
          <ShoppingCartOutlinedIcon style={{fontSize:30}}/>
          </IconButton>
 
        </div>
        <div className="order_type">
-       Pending Orders
+       Completed Orders
        </div>
        <div className="number_order">
          10
        </div>
-        
-  </CardContent>
-    </Card>
-  </div>
-  <div>
-  <Card className="refund_req card_padding" style={{textAlign:'center'}}>
-  <CardContent>
-     <div >
+          </Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>
+            
+          <div >
          <IconButton size="medium" className="order_icon">
          <LoopIcon  style={{fontSize:30}}/>
          </IconButton>
 
        </div>
        <div className="order_type">
-       Pending Orders
+       Refund Requests
        </div>
        <div className="number_order">
          10
        </div>
-       </CardContent>
-    </Card>
-  </div>
-</div>
-  <div className="left_card_graph">
-   <Card>
+          </Paper>
+        </Grid>
+      </Grid>
+
+      <Grid>
+
+
+      
+          <div className={classes.paper}>
+
+          <Card>
    <Line
               
              
@@ -108,7 +120,7 @@ export default function OrdersCard() {
                     borderColor: "rgb(131, 0, 0)",
                    
                   }]}}
-                  height={360}
+                
                   
                 
                   options={ {
@@ -150,41 +162,40 @@ export default function OrdersCard() {
                       
                       }
                   }
-                   }
-                  
-                   
-                     
-  
-             
+                   } 
                   }
                   }
                   />
     </Card>
-  </div>
 
-  </div>
-{/* --------------------------------- */}
-  <div className="right_card" > 
-  <Card className="recent_orders">
+          </div>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <div className={classes.paper}>
+          <Card className="recent_orders">
      <CardContent>
      {/* <Typography  variant="h5" color="textSecondary">
         Recent Orders
       </Typography> */}
        {/* <RecentOrder/> */}
        {
-       [1,2,3,4,5,6].map((order)=>(
-         <>
+
          <Card>
-         <RecentOrder/>
+           <Grid item xs={12}>
+           <RecentOrder/>
+          </Grid>
+             
+       
          </Card>
           
 
-         </>
-       ))
+   
        }
      </CardContent>
     </Card>
-  </div>
-  </div>
+          </div>
+        </Grid>
+        </Grid>
   </>);
 }
