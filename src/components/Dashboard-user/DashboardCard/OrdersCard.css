@@ -2,23 +2,13 @@
   display: flex;
 
   flex-direction: row;
-  justify-content: space-around !important;
+  justify-content: space-around;
 }
-.left_card {
-  flex: 0 0 40%;
-  display: flex;
-  flex-direction: column;
-}
-.right_card {
-  flex: 0 0 50%;
-  overflow: auto;
-  margin: 0 auto;
-  height: 560px;
-}
+
 .left_card_orders {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .order_icon {
   color: rgb(131, 0, 0) !important;
@@ -48,7 +38,6 @@
 }
 /* cards */
 .card_padding {
-  margin: 5px;
   border-radius: 20px !important;
 }
 .MuiPaper-root {

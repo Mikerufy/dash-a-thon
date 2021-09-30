@@ -13,6 +13,7 @@ import {  Line } from "react-chartjs-2"
 import LoopIcon from '@material-ui/icons/Loop';
 import RecentOrder from '../RecentOrders/RecentOrder';
 import BCO from "../BreadCrumbOrder/BCO"
+import TableOrder from '../TableOrder/TableOrder';
 
 
 
@@ -47,7 +48,7 @@ export default function OrdersCard() {
   {/* ---------------------------------------------------------------------------------- */}
   <Grid  container  spacing={3}>
     
-  <Grid item xs={12} sm={6} spacing={6}>
+  <Grid item xs={6} >
   <Grid container spacing={3}>
         <Grid item xs>
           <Paper className={classes.paper}>
@@ -100,78 +101,76 @@ export default function OrdersCard() {
         </Grid>
       </Grid>
 
-      <Grid>
-
 
       
-          <div className={classes.paper}>
+      <div className={classes.paper}>
 
-          <Card>
-   <Line
+<Card>
+<Line
+    
+   style={{height:295}}
+    data= {{
+      labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
+        datasets: [{
+          label: "First dataset",
+          data: [33, 53, 85, 41, 44, 65,2],
+          fill: false,
+          backgroundColor: "rgb(255, 255, 254)",
+          borderColor: "rgb(131, 0, 0)",
+         
+        }]}}
+      
+        
+      
+        options={ {
+          maintainAspectRatio:false,
+          responsive:true,
+          plugins: {
+            legend:{
+              display:false
+            },
+            title:{
+              display:true,
+              text:"Sales"
+            },
+          },
+          
+         scales:{
+           x:{
+            display:true,
+            title:{
+              display:true,
+            
+            },
+            grid:{
+              display:false,
+            
+            
+            }
+           },
+          y: {
+          display:true,
+          title:{
+            display:true,
+          
+          },
+            grid:{
+              display:false,
               
-             
-              data= {{
-                labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
-                  datasets: [{
-                    label: "First dataset",
-                    data: [33, 53, 85, 41, 44, 65,2],
-                    fill: false,
-                    backgroundColor: "rgb(255, 255, 254)",
-                    borderColor: "rgb(131, 0, 0)",
-                   
-                  }]}}
-                
-                  
-                
-                  options={ {
-                    maintainAspectRatio:false,
-                    responsive:true,
-                    plugins: {
-                      legend:{
-                        display:false
-                      },
-                      title:{
-                        display:true,
-                        text:"Sales"
-                      },
-                    },
-                    
-                   scales:{
-                     x:{
-                      display:true,
-                      title:{
-                        display:true,
-                      
-                      },
-                      grid:{
-                        display:false,
-                      
-                      
-                      }
-                     },
-                    y: {
-                    display:true,
-                    title:{
-                      display:true,
-                    
-                    },
-                      grid:{
-                        display:false,
-                        
-                      
-                      
-                      }
-                  }
-                   } 
-                  }
-                  }
-                  />
-    </Card>
+            
+            
+            }
+        }
+         } 
+        }
+        }
+        />
+</Card>
 
-          </div>
-          </Grid>
+</div>
+
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <div className={classes.paper}>
           <Card className="recent_orders">
      <CardContent>
@@ -182,7 +181,7 @@ export default function OrdersCard() {
        {
 
          <Card>
-           <Grid item xs={12}>
+           <Grid style ={{maxHeight:400,overflow:'auto'}} item xs={12}>
            <RecentOrder/>
           </Grid>
              
@@ -197,5 +196,13 @@ export default function OrdersCard() {
           </div>
         </Grid>
         </Grid>
+        <Grid  container  spacing={3}>
+    <Grid item xs={12} >
+  <Grid container spacing={3}>
+    <TableOrder/>
+
+  </Grid>
+    </Grid>
+    </Grid>
   </>);
 }
