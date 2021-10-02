@@ -1,0 +1,15 @@
+.carousel__text {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  opacity: 1;
+  z-index: 10;
+  font-family: "Birthstone", cursive;
+}
+.carousel__bkg {
+  padding: 2rem;
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 5;
+  object-fit: cover;
+}

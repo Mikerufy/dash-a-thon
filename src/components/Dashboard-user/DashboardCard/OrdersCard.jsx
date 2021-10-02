@@ -48,7 +48,7 @@ export default function OrdersCard() {
   {/* ---------------------------------------------------------------------------------- */}
   <Grid  container  spacing={3}>
     
-  <Grid item xs={6} >
+  <Grid justifyContent="space-between" item xs={6} spacing={3}>
   <Grid container spacing={3}>
         <Grid item xs>
           <Paper className={classes.paper}>
@@ -103,9 +103,10 @@ export default function OrdersCard() {
 
 
       
-      <div className={classes.paper}>
-
+   
+<div>
 <Card>
+<div className={classes.paper}>
 <Line
     
    style={{height:295}}
@@ -165,9 +166,12 @@ export default function OrdersCard() {
         }
         }
         />
+        </div>
 </Card>
 
+
 </div>
+
 
         </Grid>
         <Grid item xs={6} sm={6}>
@@ -195,14 +199,10 @@ export default function OrdersCard() {
     </Card>
           </div>
         </Grid>
+        <Grid item xs={12} >
+        <TableOrder/>
         </Grid>
-        <Grid  container  spacing={3}>
-    <Grid item xs={12} >
-  <Grid container spacing={3}>
-    <TableOrder/>
+        </Grid>
 
-  </Grid>
-    </Grid>
-    </Grid>
   </>);
 }

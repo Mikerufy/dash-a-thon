@@ -19,7 +19,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import OrdersCard from '../DashboardCard/OrdersCard';
 import { Link } from 'react-router-dom';
-
+import Analytics from "./analytics.png"
+import Add from "./add-to-basket.png"
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -115,16 +116,35 @@ export default function Sidebar() {
         }}
       >
 
-        <List>
+        {/* <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? 
-              <InboxIcon component={Link} to="/dashboard/user/analytics" style={{color:'rgb(131, 0, 0)'}}/>
+              <img src={Analytics} alt="Analytics" component={Link} to="/dashboard/user/analytics" style={{color:'rgb(131, 0, 0)'}}/>
                : <MailIcon style={{color:'rgb(131, 0, 0)'}}/>}
                </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
+        </List> */}
+        <List>
+        <ListItem button>
+        <ListItemIcon>
+          <Link to="/dashboard/user/analytics">
+          <img src={Analytics} alt="Analytics" style={{color:'rgb(131, 0, 0)'}}/>
+          </Link>
+          
+        </ListItemIcon>
+        </ListItem>
+
+        <ListItem button>
+        <ListItemIcon>
+        <Link to="/dashboard/user/add-product">
+        <img src={Add} alt="Add" style={{color:'rgb(131, 0, 0)'}}/>
+        </Link>
+           
+        </ListItemIcon>
+        </ListItem>
         </List>
 
       </Drawer>
