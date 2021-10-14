@@ -102,7 +102,10 @@ function IndividualCard({products}) {
                     </>  ))
                     }  
                     </div>
-           <h1 style={{textAlign:'center'}}>Much more...</h1>
+                    <Link to="/dashboard/customer/searched-products">
+                    <h5 style={{textAlign:'center'}}>Search the products you want.</h5>
+                    </Link>
+         
            
       
 

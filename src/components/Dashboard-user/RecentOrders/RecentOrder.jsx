@@ -45,12 +45,21 @@ export default function RecentOrder() {
   const theme = useTheme();
   const [img,setImg]=useState([])
   useEffect(()=>{
-    const fetchData= async ()=>{
-     const fetchBody=await getImg();
-    
-     setImg(fetchBody);
-  
-    }
+    const fetchData = async () => {
+      fetch("http://localhost:5000/api/user/getImg", {
+        method: "GET",
+        credentials: "include",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setImg(data);
+        });
+    };
 fetchData();        
 },[])
   return (<>

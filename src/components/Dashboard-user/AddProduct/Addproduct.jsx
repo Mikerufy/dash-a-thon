@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     onEnter: PropTypes.func,
     onExited: PropTypes.func,
   };
-function Addproduct() {
+function Addproduct( {user,products}) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -84,16 +84,7 @@ function Addproduct() {
       setOpen(false);
     };
 
-    const [products,setProducts]=useState([])
-    useEffect(()=>{
-        const fetchData= async ()=>{
-         const fetchBody=await getProductForm()
-        
-         setProducts(fetchBody);
-      
-        }
-    fetchData();        
-    },[])
+    
     return (
         <>
         <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between',padding:20}}>

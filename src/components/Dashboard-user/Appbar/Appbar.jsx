@@ -14,7 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -154,9 +154,15 @@ export default function Appbar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <ShoppingBasketIcon />
         </IconButton>
         <p>Profile</p>
+      </MenuItem>
+      <MenuItem >
+        <IconButton>
+          <ShoppingBasketIcon />
+        </IconButton>
+   
       </MenuItem>
     </Menu>
   );

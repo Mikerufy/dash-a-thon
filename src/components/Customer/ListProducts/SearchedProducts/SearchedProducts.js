@@ -1,10 +1,13 @@
-import { Card, CardContent,CardActionArea,CardMedia,Grid,Typography,IconButton } from '@mui/material'
+import { Card, CardContent,CardActionArea,CardMedia,Grid,Typography,IconButton,TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import {makeStyles } from '@material-ui/core'
 import "./SearchedProducts.css"
-import DeleteIcon from '@material-ui/icons/Delete';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useLocation } from 'react-router';
-import { getProductForm } from '../../../../API';
+import { addItemToCart, getProductForm } from '../../../../API';
+import SearchIcon from '@mui/icons-material/Search';
+import { useDispatch } from 'react-redux';
+import { fetchCart } from '../../../../redux/cartSlice';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,32 +29,65 @@ const useStyles = makeStyles((theme) => ({
   
   }));
 
-function SearchedProducts() {
-    const [products,setProducts]=useState([])
-    useEffect(()=>{
-        const fetchData= async ()=>{
-         const fetchBody=await getProductForm()
-        
-         setProducts(fetchBody);
-      
+function SearchedProducts({products}) {
+  const dispatch = useDispatch()
+  const [theArray, setTheArray] = useState([]);
+
+  const handleAddToCart=(product)=>{
+      //  await addItemToCart({
+      //   productName:product.productName,
+      //   productType:product.productType,
+      //   price:product.price,
+      //   imgUrl:product.imgUrl
+      //    })
+   
+      dispatch(fetchCart({
+        cart:
+        {
+            productName:product.productName,
+            productType:product.productType,
+            price:product.price,
+            imgUrl:product.imgUrl
         }
-    fetchData();        
-    },[])
-    const classes = useStyles();
+    }))
     
+      
+  }
+
+    const [search, setSearch] = useState();
+
+
+    const classes = useStyles();
+    const filtered = products.filter((prod) => {
+      return prod.productName.toLowerCase().indexOf(search) !== -1;
+    });
     return (<>
         <div>
             <Card style ={{padding:'3rem'}}>
                 <CardContent>
-                    <h1>Search box</h1>
+                    
                 <Grid style={{padding:20}}  container  spacing={3}>
-    <Grid item xs={12} >
+                  <div  className="searchbox">
+                  <div style={{color:'rgb(131,0,0)'}}>
+                    <SearchIcon />
+                    </div>
+
+                    <div>
+                    <TextField  
+                    onChange={(e) => setSearch(e.target.value)}
+                     size="small" id="outlined-search" placeholder="Search items" />       
+  
+                    </div>
+                    </div>
+                  
+                 <Grid item xs={12} >
+
     <Grid container spacing={3}>
           {
-              products.map((product)=>(
+              filtered.map((product)=>(
                   <>
                   
-  
+
           <Grid  item xs={3}>
           <Card key={product._id} className={classes.root2}>
         <CardActionArea>
@@ -72,7 +108,9 @@ function SearchedProducts() {
               Rs.{product.price}
               <div style={{display:'flex',float:'right',position:'relative',left:20}}>
               <IconButton>
-                  <DeleteIcon/>
+                  <AddShoppingCartIcon 
+                  onClick={()=>{handleAddToCart(product)}}
+                  />
               </IconButton>
           </div>
             </Typography>
@@ -83,6 +121,7 @@ function SearchedProducts() {
   </Grid>
                   </>
               ))
+              
           }
     </Grid>
     </Grid>

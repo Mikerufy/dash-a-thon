@@ -4,22 +4,15 @@ import Banner from '../Banner/Banner'
 import CarouselCard from '../CarouselCard/CarouselCard'
 import ListProducts from '../ListProducts/ListProducts'
 import "./CustomerPage.css"
-function CustomerPage() {
-    const [products,setProducts]=useState([])
-    useEffect(()=>{
-        const fetchData= async ()=>{
-         const fetchBody=await getProductForm()
-        
-         setProducts(fetchBody);
-      
-        }
-        fetchData();        
-    },[])
+function CustomerPage({products}) {
+
     return (<>
         <div style={{backgroundColor:'#ebefff'}}>
             <Banner/>
+           
             <CarouselCard products={products}/>
             <ListProducts products={products}/>
+            
         </div>
    </> )
 }

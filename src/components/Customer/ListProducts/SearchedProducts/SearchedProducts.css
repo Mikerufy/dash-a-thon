@@ -5,3 +5,9 @@
   left: 0;
   top: 0;
 }
+.searchbox {
+  width: 100%;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}

@@ -46,7 +46,7 @@ const responsive = {
                 products.map((product)=>(
                     <div>
                         <h2 className="carousel__text">{product.productType}</h2>
-                        <img width="100%" height="300px" className="carousel__bkg" src={product.imgUrl} alt=""/>
+                        <img width="200px" height="200px" className="carousel__bkg" src={product.imgUrl} alt=""/>
                     </div>
                 ))
 

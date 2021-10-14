@@ -3,6 +3,7 @@ import cors from "cors"
 import mongoose from "mongoose"
 import Img from "./DemoSchema.js"
 import ProductFormSchema from "./Schema/DashboardUser/ProductFormSchema.js";
+import CartSchema from "./Schema/Customer/CartSchema.js";
 // require("dotenv").config();
 
 const app = express();
@@ -90,6 +91,27 @@ app.post('/user/add-product',(req,res)=>{
 // ------------------------------------------------CUSTOMER------------------------------------------------------//
 // ---------------------------------------------------------------------------------------------------------------//
 
+app.post('/customer/add-to-cart',(req,res)=>{
+    const prod=new CartSchema(req.body)
+    prod.save().then((prod)=>{
+        res.json(prod)
+    }).catch((err)=>{
+        res.status(500).send(err.message)
+    })
+})
+
+app.get('/customer/cart',(req,res)=>{
+    ProductFormSchema.find((err,todos)=>{
+        if(err)
+        {
+            console.log(err)
+        }
+        else{
+            res.status(200).send(todos)
+            // res.json(todos)
+        }
+    })
+})
 
 
 
