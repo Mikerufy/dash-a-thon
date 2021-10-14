@@ -5,5 +5,6 @@ router.post("/", (req, res) => {
 });
 // router.use("/message", require("./routes/message.route"));
 router.use("/user", require("./routes/user.route"));
+router.use("/ml",require("./routes/ML.route"))
 
 module.exports = router;

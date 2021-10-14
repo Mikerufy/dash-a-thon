@@ -45,7 +45,8 @@ def Average_rating():
         longList.append(LatLonglist[i][1])
     rslt_df = shops[shops['Latitude'].isin(latList)]
     rslt_df = shops[shops['Longitude'].isin(longList)]
-    print(rslt_df["Aggregate rating"].mean())
+    ans = rslt_df["Aggregate rating"].mean()
+    print(ans)
 
 
 
