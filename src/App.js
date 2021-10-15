@@ -88,7 +88,7 @@ function App() {
       <Appbar/>
         <Switch>
           <Switch>
-            <Route exact path="/" ><PickASide /></Route>
+            <Route exact path="/" ><PickASide/></Route>
             <Route exact path="/login" ><SignInOut/></Route>
             <Route exact path="/sign-up-page" ><Signup/></Route>
             <Route exact path="/landing" ><Landing/></Route>

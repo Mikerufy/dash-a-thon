@@ -9,7 +9,7 @@ const languageCode = env.dialogFlowSessionLanguageCode;
 
 const sessionClient = new dialogflow.SessionsClient(
   {
-    keyFilename:"D:\\JAY_FOLDERS\\JAY\\Dashathon\\TeamNaruto_working\\TeamNaruto_CSHTN-04-main\\src\\config\\key.json"
+    keyFilename:"F:\\Tsec-Sem-5\\MP4\\dash-a-thon\\node\\src\\config\\key.json"
   }
 );
 const sessionPath = sessionClient.sessionPath(projectId, sessionId);

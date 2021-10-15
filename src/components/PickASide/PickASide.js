@@ -3,6 +3,12 @@ import "./PickASide.css"
 import svg from  "./option.svg"
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+
+
+
+
+
+
 function PickASide() {
     return (<>
         <div>
@@ -64,6 +70,8 @@ function PickASide() {
             <h2 className="about">About Us</h2>
             ISHA.........................BAPAT........................JAY
         </div>
+
+        
     </>)
 }
 
