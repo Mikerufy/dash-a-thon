@@ -1,61 +1,67 @@
-import React from 'react'
+import React, { Component } from "react";
+import Carousel from "react-spring-3d-carousel";
+import {v4 as uuidv4} from "uuid";
+import { config } from "react-spring";
+
 import "./CarouselCard.css"
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-
-
-const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3 // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 2 // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1 // optional, default to 1.
-    }
+export default class CarouselCard extends Component {
+  state = {
+    goToSlide: 0,
+    offsetRadius: 2,
+    showNavigation: true,
+    config: config.gentle
   };
-        function CarouselCard({products}) {
-            return (<>
-                <div>
-                <Carousel
-        swipeable={false}
-        draggable={false}
-        showDots={true}
-        responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
-        infinite={true}
+
+  slides = [
+    {
+      key: uuidv4(),
+      content: <img src='https://sugarspunrun.com/wp-content/uploads/2019/01/Best-Cheesecake-Recipe-2-1-of-1-4.jpg' alt="2" />
+    },
+    {
+      key: uuidv4(),
+      content: <img src='https://img.delicious.com.au/8I3yNIM6/w759-h506-cfill/del/2017/04/caramel-cake-44940-2.jpg' alt="3" />
+    },
+    {
+      key: uuidv4(),
+      content: <img src='https://res.cloudinary.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/cla5atxgxbp0w2e07vlr' alt="4" />
+    },
+    {
+      key: uuidv4(),
+      content: <img src='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F34761.jpg&q=85' alt="5" />
+    },
+    {
+      key: uuidv4(),
+      content: <img src='https://images-gmi-pmc.edge-generalmills.com/3c94e24f-7ed2-4406-9eda-224b9b869ddb.jpg' alt="6" />
+    },
+    {
+      key: uuidv4(),
+      content: <img src='https://food.fnr.sndimg.com/content/dam/images/food/fullset/2021/01/22/0/FNM_030121-Banana-Pudding-Tart_s4x3.jpg.rend.hgtvcom.616.462.suffix/1611331678502.jpeg' alt="7" />
+    }
+  ].map((slide, index) => {
+    return { ...slide, onClick: () => this.setState({ goToSlide: index }) };
+  });
+
+  onChangeInput = e => {
+    this.setState({
+      [e.target.name]: parseInt(e.target.value, 10) || 0
+    });
+  };
+
+  render() {
+    return (<>
+    <div style={{marginBottom:'5rem'}}>
+
+      <div style={{ width: "100%", height: "20rem", margin: "0 auto" }}>
+        <Carousel
+          slides={this.slides}
+          goToSlide={this.state.goToSlide}
+          offsetRadius={this.state.offsetRadius}
+          showNavigation={this.state.showNavigation}
+          animationConfig={this.state.config}
+        /> 
         
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={500}
-        containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-  
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-        >
-            {
-                products.map((product)=>(
-                    <div>
-                        <h2 className="carousel__text">{product.productType}</h2>
-                        <img width="200px" height="200px" className="carousel__bkg" src={product.imgUrl} alt=""/>
-                    </div>
-                ))
-
-            }
-    
-
-        </Carousel>;
-        </div>
-  </>  )
+      </div>
+      </div>
+    </>);
+  }
 }
-
-export default CarouselCard

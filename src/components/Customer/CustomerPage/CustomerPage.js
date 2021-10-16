@@ -4,13 +4,15 @@ import Banner from '../Banner/Banner'
 import CarouselCard from '../CarouselCard/CarouselCard'
 import ListProducts from '../ListProducts/ListProducts'
 import "./CustomerPage.css"
-function CustomerPage({products}) {
+import Chatbot from "../../Chatbot/Chatbot"
+function CustomerPage({products,user}) {
 
     return (<>
         <div style={{backgroundColor:'#ebefff'}}>
+        <Chatbot user={user} />
             <Banner/>
            
-            <CarouselCard products={products}/>
+            <CarouselCard/>
             <ListProducts products={products}/>
             
         </div>

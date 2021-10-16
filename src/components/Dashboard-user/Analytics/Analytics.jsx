@@ -55,10 +55,16 @@ const [category, setCategory] = React.useState('');
 const handleChange = (event) => {
   setCategory(event.target.value);
 };
-const [description, setDescription] = React.useState('');
-const handleChangeDescp = (event) => {
-  setDescription(event.target.value);
+const [cuisine, setCuisine] = React.useState('');
+const handleChangeCusine = (event) => {
+  setCuisine(event.target.value);
 };
+
+const [avgCost,setAvgCost]=useState('')
+const [booking,setBooking]=useState('')
+const [deliv,setDeliv]=useState('')
+const [range,setRange]=useState('')
+
 const geolocateControlStyle= {
   right: 15,
   top: 10
@@ -87,24 +93,19 @@ const MAPBOX_TOKEN =
   "pk.eyJ1IjoiamF5bmFydXRvIiwiYSI6ImNrcGY3MDFybzA4emQydnFvaHA1emY1cXAifQ.sHf7OSLjvHC6caHHVXTgQw";
 
   return (<>
-  <div>
-  <Typography  variant="h4" color="textSecondary">
-   Analytics
- </Typography>
-  </div>
-
- <hr></hr>
-  <div className={classes.root}>
-
-  </div>
     <div className={classes.root}>
-      <Grid container spacing={3}>
-      <Grid item xs={6}>
+      <Grid  style={{padding:'1rem'}} container spacing={3}>
+      <Grid item xs={12} md={6}>
+
+          <Grid container spacing={3}>
+          <Grid item xs={12} md={12}>
           <Paper className={classes.paper}>
           <div className={classes.root}>
       <Grid  style={{alignItems:'center',justifyContent:'center'}} container spacing={3}>
-
-      <Grid item xs={12} sm={6}>
+       <Grid item xs={12} md={12}>
+         <h2>Average Rating</h2>
+        </Grid>
+      <Grid item xs={12} md={6}>
         {
           userLoc ?
           (
@@ -116,7 +117,7 @@ const MAPBOX_TOKEN =
         }
      
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
         {
           userLoc ?
           (
@@ -127,7 +128,7 @@ const MAPBOX_TOKEN =
           )
         }
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
         <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
@@ -143,55 +144,17 @@ const MAPBOX_TOKEN =
         </Select>
       </FormControl>
         </Grid>
-        <Grid item xs={12} sm={6}>
-        <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label2">Description</InputLabel>
-        <Select
-          labelId="demo-simple-select-label2"
-          id="demo-simple-select2"
-          value={description}
-          onChange={handleChangeDescp}
-        >
-          <MenuItem value={11}>Chinese</MenuItem>
-          <MenuItem value={22}>Ethnicwear</MenuItem>
-          <MenuItem value={33}>Soap</MenuItem>
-          <MenuItem value={44}>Tutor</MenuItem>
-        </Select>
-      </FormControl>
+        <Grid item xs={12} md={6}>
+        <TextField placeholder="Cuisine" value={cuisine} onChange={handleChangeCusine} ></TextField>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} md={6}>
 
-        <CircularProgressbar
-          value={percentage}
-          text={`${percentage}%`}
-          styles={buildStyles({
-            // Rotation of path and trail, in number of turns (0-1)
-            rotation: 0.25,
-
-            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-            strokeLinecap: 'round',
-
-            // Text size
-            textSize: '12px',
-
-            // How long animation takes to go from one percentage to another, in seconds
-            pathTransitionDuration: 0.5,
-
-            // Can specify path transition in more detail, or remove it entirely
-            // pathTransition: 'none',
-
-            // Colors
-            pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
-            textColor: '#f88',
-            trailColor: '#d6d6d6',
-            backgroundColor: '#3e98c7',
-          })}
-        />
+  
         </Grid>
-        <Grid item xs={6}>
-        <Button variant="outlined" color="secondary">
-          Check success rate
+        <Grid item xs={12} md={6}>
+        <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',color:'white'}}>
+          Calculate
         </Button>
           </Grid>
        
@@ -202,49 +165,80 @@ const MAPBOX_TOKEN =
   
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+      
+
+        <Grid item xs={12} md={12}>
+          <Paper className={classes.paper}>
+          <div className={classes.root}>
+      <Grid  style={{alignItems:'center',justifyContent:'center'}} container spacing={3}>
+      <Grid item xs={12} md={12}>
+         <h2>Predict Rating</h2>
+        </Grid>
+      <Grid item xs={12} md={6}>
+
+            <TextField value={avgCost} placeholder="Average Cost" onChange={e => setAvgCost(e.target.value)}/>
+          
+     
+        </Grid>
+        <Grid item xs={12} md={6}>
+     
+        <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label2">Online Booking</InputLabel>
+        <Select
+          labelId="demo-simple-select-label2"
+          id="demo-simple-select2"
+          value={booking}
+          onChange={e=>setBooking(e.target.value)}
+        >
+          <MenuItem value={1}>Yes</MenuItem>
+          <MenuItem value={0}>No</MenuItem>
+
+        </Select>
+      </FormControl>
+
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label">Online Delivery</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={deliv}
+          onChange={e=>setDeliv(e.target.value)}
+        >
+          <MenuItem value={1}>Yes</MenuItem>
+          <MenuItem value={0}>No</MenuItem>
+
+        </Select>
+      </FormControl>
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <TextField placeholder="Price Range" value={range} onChange={e=>setRange(e.target.value)} ></TextField>
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+
+  
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',color:'white'}}>
+          Calculate
+        </Button>
+          </Grid>
+       
+        </Grid>
+        </div>
+ 
+
+  
+          </Paper>
+        </Grid>
+      
+        </Grid>
+        </Grid>
+        <Grid item xs={12} md={6}>
           <Paper style={{height:'100%'}} className={classes.paper}>
         
-          {/* <ReactMapGL
-          
-                                      
-                                      {...viewport}
-                                      mapboxApiAccessToken ="pk.eyJ1IjoiamF5bmFydXRvIiwiYSI6ImNrcGY3MDFybzA4emQydnFvaHA1emY1cXAifQ.sHf7OSLjvHC6caHHVXTgQw"
-                                      mapStyle="mapbox://styles/jaynaruto/ckpf7miyr0l2917vxppvlz8sd"
-                                      width="100%"
-                                      height="100%"
-                                      onViewportChange={handleViewportChange}
-                                      onDblClick={(coords)=>setUserLoc(coords.lngLat)}>
-                                                  <div
-                                                      style={{
-                                                          position: "absolute",
-                                                          top: 0,
-                                                          left: 0,
-                                                          padding: "10px"
-                                                      }}
-                                                      >
-                                                         <GeolocateControl
-                                                          style={geolocateControlStyle}
-                                                          positionOptions={{enableHighAccuracy: true}}
-                                                          trackUserLocation={true}
-                                                          auto
-                                                        />
-                                                           <Geocoder
-                                                              mapRef={mapRef}
-                                                              containerRef={geocoderContainerRef}
-                                                              onViewportChange={handleGeocoderViewportChange}
-                                                              mapboxApiAccessToken='pk.eyJ1IjoiamF5bmFydXRvIiwiYSI6ImNrcGY3MDFybzA4emQydnFvaHA1emY1cXAifQ.sHf7OSLjvHC6caHHVXTgQw'
-                                                              position="top-left"
-                                                            />
-                                                      <NavigationControl />
-                                                      </div>
-                                                      <Marker longitude={72.6430332} latitude={21.084488}>
-                                                      <div style={{ color: "white" }}>You are here</div>
-                                                      </Marker>
-  
-                                          </ReactMapGL> */}
-
-       
                   <MapGL
                     ref={mapRef}
                     {...viewport}
@@ -274,6 +268,7 @@ const MAPBOX_TOKEN =
                                                           auto
                                                         />
                                                            <Geocoder
+                                                           
                                                               mapRef={mapRef}
                                                               containerRef={geocoderContainerRef}
                                                               onViewportChange={handleGeocoderViewportChange}
@@ -285,144 +280,6 @@ const MAPBOX_TOKEN =
                   </MapGL>
           </Paper>
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>
-   <Line
-              
-             
-              data= {{
-                labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
-                  datasets: [{
-                    label: "First dataset",
-                    data: [33, 53, 85, 41, 44, 65,2],
-                    fill: false,
-                    backgroundColor: "rgb(255, 255, 254)",
-                    borderColor: "rgb(131, 0, 0)",
-                   
-                  }]}}
-                  
-                  
-                
-                  options={ {
-                    maintainAspectRatio:false,
-                    responsive:true,
-                    plugins: {
-                      legend:{
-                        display:false
-                      },
-                      title:{
-                        display:true,
-                        text:"Sales"
-                      },
-                    },
-                    
-                   scales:{
-                     x:{
-                      display:true,
-                      title:{
-                        display:true,
-                      
-                      },
-                      grid:{
-                        display:false,
-                      
-                      
-                      }
-                     },
-                    y: {
-                    display:true,
-                    title:{
-                      display:true,
-                    
-                    },
-                      grid:{
-                        display:false,
-                        
-                      
-                      
-                      }
-                  }
-                   }
-                  
-                   
-                     
-  
-             
-                  }
-                  }
-                  />
- 
-          </Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper style={{height:'100%'}} className={classes.paper}>
-   <Line
-              
-             
-              data= {{
-                labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
-                  datasets: [{
-                    label: "First dataset",
-                    data: [33, 53,2,85, 41, 44, 65],
-                    fill: false,
-                    backgroundColor: "rgb(255, 255, 254)",
-                    borderColor: "rgb(131, 0, 0)",
-                   
-                  }]}}
-                
-                
-                  options={ {
-                    maintainAspectRatio:false,
-                    responsive:true,
-                    plugins: {
-                      legend:{
-                        display:false
-                      },
-                      title:{
-                        display:true,
-                        text:"Sales"
-                      },
-                    },
-                    
-                   scales:{
-                     x:{
-                      display:true,
-                      title:{
-                        display:true,
-                      
-                      },
-                      grid:{
-                        display:false,
-                      
-                      
-                      }
-                     },
-                    y: {
-                    display:true,
-                    title:{
-                      display:true,
-                    
-                    },
-                      grid:{
-                        display:false,
-                        
-                      
-                      
-                      }
-                  }
-                   }
-                  
-                   
-                     
-  
-             
-                  }
-                  }
-                  />
-
-          </Paper>
-        </Grid>
-
       </Grid>
     </div>
  </> );

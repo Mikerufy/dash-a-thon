@@ -9,7 +9,7 @@ export default function Landing() {
               {/* <NavbarLayer /> */}
               {/* <OrdersCard/> */}
              
-              <Sidebar/>
+            <OrdersCard/>
               <button onClick={() => {
                 fetch("http://localhost:5000/api/user/logout", {
                   method: "GET",

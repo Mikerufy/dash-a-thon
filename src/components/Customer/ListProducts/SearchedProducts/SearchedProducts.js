@@ -3,13 +3,16 @@ import React, { useEffect, useState } from 'react'
 import {makeStyles } from '@material-ui/core'
 import "./SearchedProducts.css"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { useLocation } from 'react-router';
-import { addItemToCart, getProductForm } from '../../../../API';
 import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch } from 'react-redux';
 import { fetchCart } from '../../../../redux/cartSlice';
-
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+ import Select from '@mui/material/Select';
+import { Offcanvas } from 'react-bootstrap';
+import {Alert,Button} from '@mui/material';
+import Stripe from './Stripe/Stripe';
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -61,24 +64,70 @@ function SearchedProducts({products}) {
     const filtered = products.filter((prod) => {
       return prod.productName.toLowerCase().indexOf(search) !== -1;
     });
+    const [show, setShow] = useState(false);
+    const [totalPrice,setTotalPrice]=useState([])
+    const handleClose = () => setShow(false);
+    const handleShow =  (newElement) =>{ 
+   
+
+
+   setTheArray(old=>[...old,newElement]);
+   setTotalPrice(old=>[...old,newElement.price]);
+  
+   setTimeout(()=>{
+    setShow(true);
+    console.log(totalPrice)
+   },1000)
+ 
+    };
+    const [counter, setCounter] = useState(1);
+    const incrementCounter = () => setCounter(counter + 1);
+    let decrementCounter = () => setCounter(counter - 1);
+    const [click,setClick]=useState(1)
+    const [age, setAge] = React.useState('');
+  
+    const handleChange = (event) => {
+      setAge(event.target.value);
+    };
+
+    const sum = 12131
     return (<>
         <div>
-            <Card style ={{padding:'3rem'}}>
-                <CardContent>
+    
                     
                 <Grid style={{padding:20}}  container  spacing={3}>
-                  <div  className="searchbox">
-                  <div style={{color:'rgb(131,0,0)'}}>
-                    <SearchIcon />
-                    </div>
+                <Grid  item xs={12} md={9}>
+                <div>
+            <form className="search__container">
+                <div className="wrapper">
+                <input onChange={e=>setSearch(e.target.value)} placeholder="Search by name"/>
+                <button type="submit">Search</button>
 
-                    <div>
-                    <TextField  
-                    onChange={(e) => setSearch(e.target.value)}
-                     size="small" id="outlined-search" placeholder="Search items" />       
-  
+                </div>
+            </form>
+        </div>
+                  </Grid>
+                  <Grid  item xs={12} md={3}>
+                  <div className="filter__btn__dropdown" >
+                    <FormControl variant="standard" sx={{ m: 1, minWidth: '100%' }}>
+                      <InputLabel id="demo-simple-select-standard-label">{`Sorting by price-`}</InputLabel>
+                      <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        value={age}
+                        onChange={handleChange}
+                        label={`Sorting by price-`}
+                      style={{border:'none'}}
+                      >
+                        <MenuItem value={10}>Low to High</MenuItem>
+                        <MenuItem value={20}>High to Low</MenuItem>
+                
+                      </Select>
+                    </FormControl>
+
                     </div>
-                    </div>
+                  </Grid>
+
                   
                  <Grid item xs={12} >
 
@@ -88,7 +137,7 @@ function SearchedProducts({products}) {
                   <>
                   
 
-          <Grid  item xs={3}>
+          <Grid  item xs={12} md={3}>
           <Card key={product._id} className={classes.root2}>
         <CardActionArea>
           <CardMedia
@@ -109,7 +158,7 @@ function SearchedProducts({products}) {
               <div style={{display:'flex',float:'right',position:'relative',left:20}}>
               <IconButton>
                   <AddShoppingCartIcon 
-                  onClick={()=>{handleAddToCart(product)}}
+                  onClick={()=>{handleShow(product)}}
                   />
               </IconButton>
           </div>
@@ -128,9 +177,52 @@ function SearchedProducts({products}) {
           
   
           </Grid>
-                </CardContent>
-            </Card>
+         
         </div>
+        <Offcanvas show={show} onHide={handleClose} placement="end" >
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Your Shopping Cart</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+         {
+           theArray.map((item)=>(
+             <div style={{display:'flex',alignItems:'center',
+             justifyContent:'space-between',borderBottom:'1px solid black'
+             ,padding:'0.5rem'
+             }} key={item._id}>
+                <div style={{display:'flex',alignItems:'center',justifyContent:'left'}}>
+               
+                <div>
+                  <img width="50px" height="50px" src={item.imgUrl} alt=""/>
+                </div>
+                <div>
+                  <h6>{item.productName}</h6>
+                </div>
+
+                </div>
+
+                
+                <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+                  
+                <div>
+                  Rs.{item.price}
+                </div>
+                  <div> <Button onClick={incrementCounter}>+</Button></div>
+                <div> {counter} </div>
+                <div><Button onClick={decrementCounter}>-</Button></div>
+                </div>
+
+
+            </div>
+          ) )
+         }
+         <hr></hr>
+         
+         <h3>Total Bill: Rs. {sum}</h3>
+         
+         <Stripe total={totalPrice} />
+        </Offcanvas.Body>
+      </Offcanvas>
    </> )
 }
 

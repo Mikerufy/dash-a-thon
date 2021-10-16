@@ -8,14 +8,17 @@ import Typography from '@material-ui/core/Typography';
 import "./OrdersCard.css";
 import AlarmIcon from '@material-ui/icons/Alarm';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import { Grid, IconButton,Paper } from '@material-ui/core';
+import { Grid, IconButton,Paper, Box } from '@material-ui/core';
 import {  Line } from "react-chartjs-2"
 import LoopIcon from '@material-ui/icons/Loop';
 import RecentOrder from '../RecentOrders/RecentOrder';
 import BCO from "../BreadCrumbOrder/BCO"
 import TableOrder from '../TableOrder/TableOrder';
-
-
+import analytics from "./analytics.svg"
+import cart from "./cart.svg"
+import { CardMedia } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,29 +31,65 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function OrdersCard() {
+  const theme = useTheme();
   const classes = useStyles();
   return (<>
-  <div className="flex_row_container">
-  <div>
-  <Typography  variant="h5" color="textSecondary">
-   Dashboard
- </Typography>
-  </div>
-  <div className="bco">
-  <BCO/>
-  </div>
-  </div>
 
+  <Grid  container style={{padding:'4rem'}}  spacing={3}>
+  <Grid style={{textAlign:'center'}} item xs={12} md={6} >
+  <Grid justifyContent="space-evenly" container spacing={3}>
+  <Card style={{ display: 'flex' }}>
+    <Grid item xs={12} md={6} >
+      <div>
+        <CardContent style={{marginTop:'2rem'}}>
+          <Typography component="div" variant="h5">
+            Analytics
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary" component="div">
+          <Link to="/dashboard/user/analytics">
+           <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',borderRadius:20}} >Continue</Button>
+           </Link>
+          </Typography>
+        </CardContent>
+      </div>
+      </Grid>
+      <Grid item xs={12} md={6} >
+      <img width="100%" height="100%" src={analytics} alt=""/>
+      </Grid>
+      
+    </Card>
 
- 
-  <hr></hr>
-
-  {/* ---------------------------------------------------------------------------------- */}
-  <Grid  container  spacing={3}>
-    
-  <Grid justifyContent="space-between" item xs={6} spacing={3}>
+  </Grid>
+  </Grid>
+  <Grid  item xs={12} md={6} >
   <Grid container spacing={3}>
-        <Grid item xs>
+  <Card style={{ display: 'flex' }}>
+    <Grid item xs={12} md={6} >
+      <div >
+        <CardContent style={{marginTop:'2rem'}} >
+          <Typography component="div" variant="h5">
+            Add Items
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary" component="div">
+          <Link to="/dashboard/user/add-product">
+          <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',borderRadius:20}} >Continue</Button>
+          </Link>
+          </Typography>
+        </CardContent>
+      </div>
+      </Grid>
+      <Grid item xs={12} md={6} >
+    
+       <img width="100%" height="100%" src={cart} alt=""/>
+      </Grid>
+      
+    </Card>
+
+  </Grid>
+  </Grid>
+  <Grid justifyContent="space-between" item xs={12} md={6} spacing={3}>
+  <Grid container spacing={3}>
+        <Grid item xs={12} md={4}>
           <Paper className={classes.paper}>
           <div >
          <IconButton size="medium" className="order_icon">
@@ -66,7 +105,7 @@ export default function OrdersCard() {
        </div>
           </Paper>
         </Grid>
-        <Grid item xs>
+        <Grid item xs={12} md={4}>
           <Paper className={classes.paper}>
           <div >
          <IconButton className="order_icon">
@@ -82,7 +121,7 @@ export default function OrdersCard() {
        </div>
           </Paper>
         </Grid>
-        <Grid item xs>
+        <Grid item xs={12} md={4}>
           <Paper className={classes.paper}>
             
           <div >
@@ -99,12 +138,8 @@ export default function OrdersCard() {
        </div>
           </Paper>
         </Grid>
-      </Grid>
-
-
-      
-   
-<div>
+        <Grid item xs={12} md={12}>
+        <div>
 <Card>
 <div className={classes.paper}>
 <Line
@@ -172,6 +207,13 @@ export default function OrdersCard() {
 
 </div>
 
+
+        </Grid>
+      </Grid>
+
+
+      
+   
 
         </Grid>
         <Grid item xs={6} sm={6}>

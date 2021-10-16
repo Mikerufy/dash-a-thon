@@ -12,5 +12,7 @@ router.post("/addbuyer", view.addbuyer);
 router.post("/addseller", view.addseller);
 router.get("/getbuyer", view.getbuyer);
 router.get("/getseller", view.getseller);
+router.post("/addseller",view.addseller);
+router.get("/get")
 
 module.exports = router;

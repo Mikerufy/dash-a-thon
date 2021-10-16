@@ -4,7 +4,7 @@ const addproducts = require('../models/product.form')
 const Img = require('../models/img')
 const Buyer_Data = require('../models/buyer.data')
 const Seller_Data = require('../models/seller.data')
-
+const Seller = require('../models/seller')
 
 module.exports = {
   getUser: (req, res) => {

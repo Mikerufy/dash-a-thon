@@ -47,7 +47,7 @@ module.exports = {
    
     // return res.send({ message, user: req.user.username,Removeproduct });
     // }
-    res.send({ message, user: req.user.username });
+    res.send({ message, user: req.user.email });
   },
   getMessage: async (req, res) => {
     if (!req.user) {

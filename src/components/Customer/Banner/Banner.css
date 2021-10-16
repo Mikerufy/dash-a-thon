@@ -1,3 +1,36 @@
 .banner__img {
   width: max-content;
 }
+.introduction {
+  display: flex !important;
+  flex-direction: row-reverse;
+}
+.introduction__text {
+  display: block;
+
+  font-size: 2.2rem;
+  line-height: 4rem;
+
+  text-align: left;
+  color: #191414 !important;
+  font-family: "Bubblegum Sans", cursive !important;
+  font-style: normal;
+  font-weight: normal;
+
+  color: #191414 !important;
+}
+p {
+  text-align: left;
+  font-size: 1.5rem;
+
+  font-family: "Raleway", sans-serif !important;
+  font-style: normal;
+  font-weight: normal;
+
+  color: #191414 !important;
+}
+
+.introduction__img {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
