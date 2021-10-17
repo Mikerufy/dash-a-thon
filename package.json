@@ -21,6 +21,7 @@
     "bootstrap": "^5.1.0",
     "chart.js": "^3.5.1",
     "clsx": "^1.1.1",
+    "nodemon": "^2.0.13",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.4",
@@ -35,6 +36,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-spring": "^9.2.4",
+    "react-spring-3d-carousel": "^1.2.1",
     "react-vertical-timeline-component": "^3.3.3",
     "recharts": "^2.1.2",
     "web-vitals": "^1.1.2"

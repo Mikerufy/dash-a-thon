@@ -6,10 +6,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 
 import sys
+pd.options.mode.chained_assignment = None
+
+std = sys.stdout
 
 cost, book, delivery, prange = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 
-print(123)
+cost = int(cost)
+book = int(book)
+delivery = int(delivery)
+prange = int(prange)
 
 
 def cuisine_counter(inpStr):
@@ -23,12 +29,12 @@ def Predict_rating():
     ZomatoData = ZomatoData.drop_duplicates()
     ZomatoData['CuisineCount'] = ZomatoData['Cuisines'].apply(cuisine_counter)
     UselessColumns = ['Restaurant ID', 'Restaurant Name', 'City', 'Address',
-                      'Locality', 'Locality Verbose', 'Cuisines', 'Rating color', 'Rating text']
+                       'Locality', 'Locality Verbose', 'Cuisines', 'Rating color', 'Rating text']
     ZomatoData = ZomatoData.drop(UselessColumns, axis=1)
     # Finding nearest values to 4000 mark
     ZomatoData['Votes'][ZomatoData['Votes']
-                        < 4000].sort_values(ascending=False)
-    # Replacing outliers with nearest possibe value
+                         < 4000].sort_values(ascending=False)
+     # Replacing outliers with nearest possibe value
     ZomatoData['Votes'][ZomatoData['Votes'] > 4000] = 3986
     # Finding nearest values to 50000 mark
     ZomatoData['Average Cost for two'][ZomatoData['Average Cost for two']
@@ -70,13 +76,14 @@ def Predict_rating():
         X, y, test_size=0.3, random_state=42)
 
     RegModel = RandomForestRegressor(
-        max_depth=2, n_estimators=300, criterion='mse')
+        max_depth=2, n_estimators=300, criterion='squared_error')
     # print(RegModel)
     # Creating the model on Training Data
     RF = RegModel.fit(X_train, y_train)
     # print(RF.score(X_test, y_test))
     y_pred2 = RF.predict([[100, cost, book, delivery, prange]])
-    print(str(y_pred2[0]))
+    var = str(y_pred2[0])
+    print(var)
 
 
 Predict_rating()
