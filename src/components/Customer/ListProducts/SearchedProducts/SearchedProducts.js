@@ -141,6 +141,7 @@ function SearchedProducts({products}) {
           <Card key={product._id} className={classes.root2}>
         <CardActionArea>
           <CardMedia
+               onClick={()=>{handleShow(product)}}
           component="img"
             className={classes.media}
             image={product.imgUrl}
@@ -158,7 +159,7 @@ function SearchedProducts({products}) {
               <div style={{display:'flex',float:'right',position:'relative',left:20}}>
               <IconButton>
                   <AddShoppingCartIcon 
-                  onClick={()=>{handleShow(product)}}
+             
                   />
               </IconButton>
           </div>

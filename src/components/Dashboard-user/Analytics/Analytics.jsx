@@ -17,6 +17,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Geocoder from 'react-map-gl-geocoder'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import { averageRating, getAverageRating } from '../../../API';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -64,7 +65,17 @@ const [avgCost,setAvgCost]=useState('')
 const [booking,setBooking]=useState('')
 const [deliv,setDeliv]=useState('')
 const [range,setRange]=useState('')
+const [rating,setRating]=useState('')
 
+const handleCalculate=async()=>{
+  alert("pressed")
+  await averageRating({
+    "cusine":cuisine,
+    "x":userLoc[1],
+    "y":userLoc[0]
+  })
+  setRating(await getAverageRating())
+  }
 const geolocateControlStyle= {
   right: 15,
   top: 10
@@ -91,6 +102,8 @@ const handleGeocoderViewportChange = useCallback(
 );
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiamF5bmFydXRvIiwiYSI6ImNrcGY3MDFybzA4emQydnFvaHA1emY1cXAifQ.sHf7OSLjvHC6caHHVXTgQw";
+
+
 
   return (<>
     <div className={classes.root}>
@@ -149,11 +162,10 @@ const MAPBOX_TOKEN =
         </Grid>
 
         <Grid item xs={12} md={6}>
-
-  
+        {rating}
         </Grid>
         <Grid item xs={12} md={6}>
-        <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',color:'white'}}>
+        <Button onClick={handleCalculate} variant="contained" style={{backgroundColor:'rgb(131,0,0)',color:'white'}}>
           Calculate
         </Button>
           </Grid>

@@ -4,7 +4,7 @@ const { spawn,exec } = require("child_process");
 const func = (cusine,x,y)=>{
   return new Promise((resolve, reject) => {
   exec(
-    `cd C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers && python C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers\\Average_rating.py ${cusine} ${x} ${y}`,
+    `cd C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers && python Average_rating.py ${cusine} ${x} ${y}`,
     (error, stdout, stderr) => {
       if (error) reject({error,stderr});
       if (stderr) reject(stderr);
@@ -14,10 +14,11 @@ const func = (cusine,x,y)=>{
 });
 }
 
-const predictfunc = ()=>{
+const predictfunc = (cost, book, delivery, prange)=>{
   return new Promise((resolve, reject) => {
   exec(
-    `cd C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers && python Predict_rating.py 500 0 1 1000`,
+    `cd C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers && python Predict_rating.py ${cost} ${book} ${delivery} ${prange}`,
+     console.log("aparams",cost),
     (error, stdout, stderr) => {
       if (error) reject({error,stderr});
       if (stderr) reject(stderr);
@@ -40,8 +41,11 @@ module.exports = {
   predict: (req, res) => {
     errorHandler(req, res, async () => {
       var dataToSend = "";
-      // var {cost, book, delivery, prange} = req.body;
-    dataToSend += await predictfunc();
+      console.log(req.body)
+      var data =req.body;
+      // console.log(data)
+      // console.log(cost)
+    dataToSend += await predictfunc(data.cost, data.book, data.delivery, data.prange);
     console.log(dataToSend)
     res.status(200).json(dataToSend)
     });

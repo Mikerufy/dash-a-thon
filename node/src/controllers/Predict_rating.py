@@ -8,11 +8,8 @@ from sklearn.ensemble import RandomForestRegressor
 import sys
 
 cost, book, delivery, prange = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
-cost = int(cost)
-book = int(book)
-delivery = int(delivery)
-prange = int(prange)
-print(cost)
+
+print(123)
 
 
 def cuisine_counter(inpStr):
