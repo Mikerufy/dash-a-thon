@@ -52,7 +52,8 @@ function ProductForm() {
         body:JSON.stringify(data)
 })
 
-        setAlert(true)
+        setAlert(true);
+        
 
     }
 
@@ -131,7 +132,7 @@ function ProductForm() {
                         <>
                         <div className={classes.root}>
                               <Alert variant="filled" severity="success">
-                                Product successfully added!
+                              Product is being reviewed and will be added soon!
                             </Alert>
                             </div>
                         </>

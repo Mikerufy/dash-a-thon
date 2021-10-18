@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import ProductForm from './ProductForm';
 import { getProductForm } from '../../../API';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -84,10 +85,10 @@ function Addproduct( {user,products}) {
       setOpen(false);
     };
 
-    
+    console.log(products)
     return (
         <>
-        <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between',padding:20}}>
+        <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between',padding:20,marginTop:'5rem'}}>
             <div>
             <Typography variant="h5" color="textSecondary">
                 Add Product
@@ -124,49 +125,44 @@ function Addproduct( {user,products}) {
 
   <Grid item xs={12} >
   <Grid container spacing={3}>
-        {
-            products.map((product)=>(
-                <>
-                
-
-        <Grid  item xs={3}>
-        <Card key={product._id} className={classes.root2}>
-      <CardActionArea>
-        <CardMedia
-        component="img"
-          className={classes.media}
-          image={product.imgUrl}
+  
+        { 
+        products.map((email)=>(
+          user.email===email.email ? 
          
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-          {product.productName}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          {product.productType}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Rs.{product.price}
-            <div style={{display:'flex',float:'right',position:'relative',left:20}}>
-            <IconButton>
-                <DeleteIcon/>
-            </IconButton>
-        </div>
-          </Typography>
-        </CardContent>
-
-      </CardActionArea>
- 
-
-    </Card>
-        
-      
-
+          email.product.map((product)=>(
+              <>
               
 
-</Grid>
-                </>
-            ))
+              <Grid item xs={3} md={3}>
+                      <Card key={product._id} className={classes.root2}>
+             
+                            <img width="307px" height="200px" src={product[0].imgUrl} alt=""/>
+                          
+                          <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                {product[0].productName}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                {product[0].productType}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                  Rs.{product[0].price}
+                                  <div style={{display:'flex',float:'right',position:'relative',left:20}}>
+                                  <IconButton>
+                                      <AddShoppingCartIcon style={{fill : 'black'}}/>
+                                  </IconButton>
+                              </div>
+                                </Typography>
+                              </CardContent>
+                      
+                        </Card>
+                        </Grid>
+              </>
+          ))
+          : null
+        ))
+       
         }
   </Grid>
   </Grid>

@@ -8,7 +8,7 @@ import Chatbot from "../../Chatbot/Chatbot"
 function CustomerPage({products,user}) {
 
     return (<>
-        <div style={{backgroundColor:'#ebefff'}}>
+        <div className="bg">
         <Chatbot user={user} />
             <Banner/>
            

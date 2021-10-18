@@ -37,7 +37,7 @@ function Banner() {
             <Grid style={{textAlign:'left'}} item xs={12} md={10}>
             <div   className="introduction__btns">
     
-                <Button
+                {/* <Button
                      style={{
                         color:'#ffffff',
                         backgroundColor:'rgb(131,0,0)',
@@ -47,7 +47,7 @@ function Banner() {
                         height: 50,
                 
                     }}
-                     variant=" contained" size="large">VIEW OFFERS</Button>
+                     variant=" contained" size="large">VIEW OFFERS</Button> */}
     
                 
                 </div>

@@ -12,16 +12,7 @@ function ListProducts({products}) {
 
     return (<>
         <div className="listofproducts">
-        
-      
-
-          {/* --------- */}
     <IndividualCard products={products}/>  
-          
-
-          
-  
-
         </div>
     </>)
 }

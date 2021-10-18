@@ -35,17 +35,19 @@ export default function OrdersCard() {
   const classes = useStyles();
   return (<>
 
-  <Grid  container style={{padding:'4rem'}}  spacing={3}>
-  <Grid style={{paddingLeft:'1.5rem'}} item xs={12} md={6} >
-  <Grid  container spacing={3}>
+  <Grid  container style={{padding:'4rem',marginTop:'2rem'}}  spacing={3}>
+  <Grid  item xs={12} md={6} >
   <Card style={{ display: 'flex' }}>
-    <Grid item xs={12} md={6} >
+  <Grid  container spacing={3}>
+
+    <Grid style={{textAlign:'center'}} item xs={12} md={6} >
       <div>
         <CardContent style={{marginTop:'2rem'}}>
-          <Typography component="div" variant="h5">
+          <Typography component="div" variant="h4">
             Analytics
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
+            <br></br>
           <Link to="/dashboard/user/analytics">
            <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',borderRadius:20}} >Continue</Button>
            </Link>
@@ -57,35 +59,38 @@ export default function OrdersCard() {
       <img width="100%" height="100%" src={analytics} alt=""/>
       </Grid>
       
-    </Card>
+
 
   </Grid>
+  </Card>
   </Grid>
-  <Grid style={{paddingLeft:'1.5rem'}} item xs={12} md={6} >
-  <Grid  container spacing={3}>
+  <Grid item xs={12} md={6} >
   <Card style={{ display: 'flex' }}>
-    <Grid item xs={12} md={6} >
-      <div >
-        <CardContent style={{marginTop:'2rem'}} >
-          <Typography component="div" variant="h5">
-            Add Items
+  <Grid  container spacing={3}>
+
+    <Grid style={{textAlign:'center'}} item xs={12} md={6} >
+      <div>
+        <CardContent style={{marginTop:'2rem'}}>
+          <Typography component="div" variant="h4">
+            Add Product
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
+          <br></br>
           <Link to="/dashboard/user/add-product">
-          <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',borderRadius:20}} >Continue</Button>
-          </Link>
+           <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',borderRadius:20}} >Continue</Button>
+           </Link>
           </Typography>
         </CardContent>
       </div>
       </Grid>
       <Grid item xs={12} md={6} >
-    
-       <img width="100%" height="100%" src={cart} alt=""/>
+      <img width="100%" height="100%" src={cart} alt=""/>
       </Grid>
       
-    </Card>
+
 
   </Grid>
+  </Card>
   </Grid>
   <Grid justifyContent="space-between" item xs={12} md={6} spacing={3}>
   <Grid container spacing={3}>
@@ -220,14 +225,14 @@ export default function OrdersCard() {
           <div className={classes.paper}>
           <Card className="recent_orders">
      <CardContent>
-     {/* <Typography  variant="h5" color="textSecondary">
+     {/* <Typography  variant="h4" color="textSecondary">
         Recent Orders
       </Typography> */}
        {/* <RecentOrder/> */}
        {
 
          <Card>
-           <Grid style ={{maxHeight:400,overflow:'auto'}} item xs={12}>
+           <Grid style ={{maxHeight:427,overflow:'auto'}} item xs={12}>
            <RecentOrder/>
           </Grid>
              
