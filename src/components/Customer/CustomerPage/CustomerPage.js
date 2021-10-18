@@ -13,7 +13,7 @@ function CustomerPage({products,user}) {
             <Banner/>
            
             <CarouselCard/>
-            <ListProducts products={products}/>
+            <ListProducts products={products} user={user}/>
             
         </div>
    </> )

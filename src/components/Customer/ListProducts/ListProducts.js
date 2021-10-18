@@ -6,13 +6,13 @@ import "./ListProducts.css"
 import IndividualCard from './IndividualCard/IndividualCard';
 
 
-function ListProducts({products}) {
+function ListProducts({products,user}) {
     
 
 
     return (<>
         <div className="listofproducts">
-    <IndividualCard products={products}/>  
+    <IndividualCard products={products} user={user}/>  
         </div>
     </>)
 }

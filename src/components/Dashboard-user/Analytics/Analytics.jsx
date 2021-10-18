@@ -153,7 +153,7 @@ const MAPBOX_TOKEN =
 
 
   return (<>
-    <div className={classes.root}>
+    <div className={classes.root} style={{marginTop:'6rem'}}>
       <Grid  style={{padding:'1rem'}} container spacing={3}>
       <Grid item xs={12} md={6}>
 
@@ -310,14 +310,15 @@ const MAPBOX_TOKEN =
                   >
                     <div
                     ref={geocoderContainerRef}
-                    style={{ position: "relative", top: 10, left:10, zIndex: 1 }}
+                    style={{ position: "relative", top: 10, left:10, zIndex: 1}}
                   />
                     <div
                                                       style={{
                                                           position: "absolute",
                                                           top: 0,
                                                           right: 20,
-                                                          padding: "10px"
+                                                          padding: "10px",
+                                                        
                                                       }}
                                                       >
                                                         <GeolocateControl

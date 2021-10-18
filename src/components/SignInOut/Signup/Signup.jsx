@@ -55,7 +55,7 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: '100vh', paddingTop:'2rem' }}>
         <CssBaseline />
         <Grid
           item
@@ -63,7 +63,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://media-exp1.licdn.com/dms/image/C560BAQHMxXPFNFSeww/company-logo_200_200/0/1592253031349?e=2159024400&v=beta&t=iRUkDvN-g2ord004g0dW57D9GOWRokun50FN8XVNEvo)',
+            backgroundImage: 'url(https://www.youngisthan.in/wp-content/uploads/2018/05/featured-15.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -85,7 +85,7 @@ export default function SignInSide() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Sign up
             </Typography>
             <Box component="form" noValidate  sx={{ mt: 1 }}>
               <TextField
@@ -93,7 +93,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                placeholder="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -107,7 +107,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                placeholder="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -121,8 +121,8 @@ export default function SignInSide() {
                 required
                 fullWidth
                 name="confirm-password"
-                label="Confirm Password"
-                type="confirm-password"
+                placeholder="Confirm Password"
+                type="password"
                 id="confirm-password"
                 autoComplete="current-password"
                 value={form.password_confirmation}
@@ -138,7 +138,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 name="address"
-                label="Address"
+                placeholder="Address"
                 type="address"
                 id="address"
                 value={form.address}
@@ -150,10 +150,7 @@ export default function SignInSide() {
                 }}
                 
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+     
               <Button
                 fullWidth
                 variant="contained"
@@ -192,9 +189,7 @@ export default function SignInSide() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
+                  
                 </Grid>
                 <Grid item>
                   <Link to="/login" variant="body2">
@@ -202,7 +197,7 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+             
             </Box>
           </Box>
         </Grid>

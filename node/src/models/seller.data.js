@@ -6,6 +6,9 @@ const Seller_Data_Schema = new Schema(
         email : String,
         buyer_email : String,
         product : [{type : String}]
+    },
+    {
+        timestamps: true,
     }
 )
 

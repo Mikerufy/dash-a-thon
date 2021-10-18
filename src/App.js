@@ -105,24 +105,24 @@ function App() {
     <div className="App">
       
       <Router>
-      <Appbar/>
+      <Appbar user = {user}/>
         <Switch>
           <Switch>
             <Route exact path="/" ><PickASide/></Route>
             <Route exact path="/login" ><SignInOut/></Route>
             <Route exact path="/sign-up-page" ><Signup/></Route>
-            <Route exact path="/landing" ><Landing/></Route>
-            <Route exact path="/dashboard/user/analytics" >{user ? <Analytics user={user} /> : <Redirect to="/login" />}</Route>
-            <Route exact path="/dashboard/user/add-product" >{user ? <Addproduct products = {productsSeller} user={user} /> : <Redirect to="/login" />}</Route>
-            <Route exact path="/dashboard/customer" >{user ? <CustomerPage user={user} products = {productsSeller} /> : <Redirect to="/login" />}</Route>
+            <Route exact path="/landing" >{user && user.what ==="seller"? <Landing user={user} /> : <Redirect to="/" />}</Route>
+            <Route exact path="/dashboard/user/analytics" >{user && user.what==="seller" ? <Analytics user={user} /> : <Redirect to="/" />}</Route>
+            <Route exact path="/dashboard/user/add-product" >{user && user.what==="seller" ? <Addproduct products = {productsSeller} user={user} /> : <Redirect to="/" />}</Route>
+            <Route exact path="/dashboard/customer" >{user && user.what==="buyer"? <CustomerPage user={user} products = {productsSeller} /> : <Redirect to="/" />}</Route>
             <Route exact path="/dashboard/customer/searched-products" >
               <SearchedProducts products={products} />
               </Route>
             <Route exact path="/dashboard/customer/cart">
-            <Cart/>
+            {user && user.what==="buyer"? <Cart user={user} products = {productsSeller} /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/dashboard/customer/checkout">
-            <Checkout/>
+          {user && user.what==="buyer"? <Checkout user={user} products = {productsSeller} /> : <Redirect to="/" />}
           </Route>
 
           </Switch>

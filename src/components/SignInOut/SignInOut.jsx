@@ -45,7 +45,7 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: '100vh' , paddingTop:'2rem'}}>
         <CssBaseline />
         <Grid
           item
@@ -53,7 +53,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url(https://www.youngisthan.in/wp-content/uploads/2018/05/featured-15.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -83,7 +83,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                placeholder="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -97,7 +97,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                placeholder="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -106,10 +106,7 @@ export default function SignInSide() {
                     setForm({ ...form, password: event.target.value })
                   }
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+
               <Button
                 fullWidth
                 variant="contained"
@@ -127,14 +124,17 @@ export default function SignInSide() {
                       body: JSON.stringify(form),
                     })
                       .then((res) => {
-                        if (res.status === 201) {
-                          window.location.href = "/landing";
-                        }
                         return res.json();
                       })
                       .then((data) => {
                         console.log(data);
                         localStorage.setItem("user", JSON.stringify(data.user));
+                        if(data.user.what==="buyer"){
+                          window.location.href = "/dashboard/customer"
+                        }
+                        else{
+                          window.location.href = "/landing"
+                        }
                       });
                   }
                 
@@ -144,9 +144,7 @@ export default function SignInSide() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
+    
                 </Grid>
                 <Grid item>
                   <Link to="/" variant="body2">
@@ -154,7 +152,7 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              
             </Box>
           </Box>
         </Grid>

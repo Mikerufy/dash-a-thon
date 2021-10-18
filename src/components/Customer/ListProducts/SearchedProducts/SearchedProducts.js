@@ -180,50 +180,7 @@ function SearchedProducts({products}) {
           </Grid>
          
         </div>
-        <Offcanvas show={show} onHide={handleClose} placement="end" >
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Your Shopping Cart</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-         {
-           theArray.map((item)=>(
-             <div style={{display:'flex',alignItems:'center',
-             justifyContent:'space-between',borderBottom:'1px solid black'
-             ,padding:'0.5rem'
-             }} key={item._id}>
-                <div style={{display:'flex',alignItems:'center',justifyContent:'left'}}>
-               
-                <div>
-                  <img width="50px" height="50px" src={item.imgUrl} alt=""/>
-                </div>
-                <div>
-                  <h6>{item.productName}</h6>
-                </div>
-
-                </div>
-
-                
-                <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                  
-                <div>
-                  Rs.{item.price}
-                </div>
-                  <div> <Button onClick={incrementCounter}>+</Button></div>
-                <div> {counter} </div>
-                <div><Button onClick={decrementCounter}>-</Button></div>
-                </div>
-
-
-            </div>
-          ) )
-         }
-         <hr></hr>
-         
-         <h3>Total Bill: Rs. {sum}</h3>
-         
-         <Stripe total={totalPrice} />
-        </Offcanvas.Body>
-      </Offcanvas>
+        
    </> )
 }
 

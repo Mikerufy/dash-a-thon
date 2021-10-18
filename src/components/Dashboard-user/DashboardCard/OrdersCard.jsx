@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-export default function OrdersCard() {
+export default function OrdersCard({user}) {
   const theme = useTheme();
   const classes = useStyles();
   return (<>
@@ -92,162 +92,10 @@ export default function OrdersCard() {
   </Grid>
   </Card>
   </Grid>
-  <Grid justifyContent="space-between" item xs={12} md={6} spacing={3}>
-  <Grid container spacing={3}>
-        <Grid item xs={12} md={4}>
-          <Paper className={classes.paper}>
-          <div >
-         <IconButton size="medium" className="order_icon">
-         <AlarmIcon  style={{fontSize:30}}/>
-         </IconButton>
 
-       </div>
-       <div className="order_type">
-       Pending Orders
-       </div>
-       <div className="number_order">
-         10
-       </div>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Paper className={classes.paper}>
-          <div >
-         <IconButton className="order_icon">
-         <ShoppingCartOutlinedIcon style={{fontSize:30}}/>
-         </IconButton>
-
-       </div>
-       <div className="order_type">
-       Completed Orders
-       </div>
-       <div className="number_order">
-         10
-       </div>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Paper className={classes.paper}>
-            
-          <div >
-         <IconButton size="medium" className="order_icon">
-         <LoopIcon  style={{fontSize:30}}/>
-         </IconButton>
-
-       </div>
-       <div className="order_type">
-       Refund Requests
-       </div>
-       <div className="number_order">
-         10
-       </div>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={12}>
-        <div>
-<Card>
-<div className={classes.paper}>
-<Line
-    
-   style={{height:295}}
-    data= {{
-      labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
-        datasets: [{
-          label: "First dataset",
-          data: [33, 53, 85, 41, 44, 65,2],
-          fill: false,
-          backgroundColor: "rgb(255, 255, 254)",
-          borderColor: "rgb(131, 0, 0)",
-         
-        }]}}
-      
         
-      
-        options={ {
-          maintainAspectRatio:false,
-          responsive:true,
-          plugins: {
-            legend:{
-              display:false
-            },
-            title:{
-              display:true,
-              text:"Sales"
-            },
-          },
-          
-         scales:{
-           x:{
-            display:true,
-            title:{
-              display:true,
-            
-            },
-            grid:{
-              display:false,
-            
-            
-            }
-           },
-          y: {
-          display:true,
-          title:{
-            display:true,
-          
-          },
-            grid:{
-              display:false,
-              
-            
-            
-            }
-        }
-         } 
-        }
-        }
-        />
-        </div>
-</Card>
-
-
-</div>
-
-
-        </Grid>
-      </Grid>
-
-
-      
-   
-
-        </Grid>
-        <Grid item xs={6} sm={6}>
-          <div className={classes.paper}>
-          <Card className="recent_orders">
-     <CardContent>
-     {/* <Typography  variant="h4" color="textSecondary">
-        Recent Orders
-      </Typography> */}
-       {/* <RecentOrder/> */}
-       {
-
-         <Card>
-           <Grid style ={{maxHeight:427,overflow:'auto'}} item xs={12}>
-           <RecentOrder/>
-          </Grid>
-             
-       
-         </Card>
-          
-
-   
-       }
-     </CardContent>
-    </Card>
-          </div>
-        </Grid>
         <Grid item xs={12} >
-        <TableOrder/>
+        <TableOrder user={user} />
         </Grid>
         </Grid>
 

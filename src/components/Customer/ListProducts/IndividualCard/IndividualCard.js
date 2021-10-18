@@ -6,8 +6,37 @@ import CardMedia from '@material-ui/core/CardMedia';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import "./IndividualCard.css"
 import { Link } from 'react-router-dom';
-function IndividualCard({products}) {
+import { Offcanvas } from 'react-bootstrap';
+import {Alert,Button} from '@mui/material';
+import Stripe from '../SearchedProducts/Stripe/Stripe';
+import {useState} from 'react';
 
+
+function IndividualCard({products,user}) {
+
+  const [theArray, setTheArray] = useState([]);
+  const [show, setShow] = useState(false);
+  const [seller_mail,setSeller_mail] = useState("");
+    const [totalPrice,setTotalPrice]=useState([])
+    const handleClose = () => setShow(false);
+
+    const [counter, setCounter] = useState(1);
+    const incrementCounter = () => setCounter(counter + 1);
+    let decrementCounter = () => setCounter(counter - 1);
+    const sum = 12131
+  const handleShow =  (newElement,mail) =>{ 
+   
+    setSeller_mail(mail)
+    
+
+    setTheArray(old=>[...old,newElement]);
+    setTotalPrice(old=>[...old,newElement.price]);
+   
+    setTimeout(()=>{
+     setShow(true);
+     console.log(totalPrice)
+    },1000)
+     };
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -28,11 +57,12 @@ function IndividualCard({products}) {
       
       }));
     const classes = useStyles();
-    console.log(products)
+    // console.log(products)
     return (<>
               {
                 products.map((prod)=>(
                   <Box sx={{ flexGrow: 1 , p:'2rem'}}>
+                    {/* {console.log(products.email)} */}
                   <Grid container spacing={1}>
                 <div className="label">  <h3>{prod.name}</h3> </div>
                     <Grid item xs={12} md={12}>
@@ -57,8 +87,9 @@ function IndividualCard({products}) {
                                   <Typography variant="body2" color="textSecondary" component="p">
                                     Rs.{product[0].price}
                                     <div style={{display:'flex',float:'right',position:'relative',left:20}}>
-                                    <IconButton>
-                                        <AddShoppingCartIcon style={{fill : 'black'}}/>
+                                      {/* {console.log(prod.email)} */}
+                                    <IconButton > 
+                                        <AddShoppingCartIcon style={{fill : 'black'}} onClick={()=>{handleShow(product[0],prod.email)}}/>
                                     </IconButton>
                                 </div>
                                   </Typography>
@@ -94,6 +125,50 @@ function IndividualCard({products}) {
                     <Link to="/dashboard/customer/searched-products">
                     <h5 style={{textAlign:'center'}}>Search the products you want.</h5>
                     </Link>
+                    <Offcanvas show={show} onHide={handleClose} placement="end" >
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Your Shopping Cart</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+         {
+           theArray.map((item)=>(
+             <div style={{display:'flex',alignItems:'center',
+             justifyContent:'space-between',borderBottom:'1px solid black'
+             ,padding:'0.5rem'
+             }} key={item._id}>
+                <div style={{display:'flex',alignItems:'center',justifyContent:'left'}}>
+               
+                <div>
+                  <img width="50px" height="50px" src={item.imgUrl} alt=""/>
+                </div>
+                <div>
+                  <h6>{item.productName}</h6>
+                </div>
+
+                </div>
+
+                
+                <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+                  
+                <div>
+                  Rs.{item.price}
+                </div>
+                  <div> <Button onClick={incrementCounter}>+</Button></div>
+                <div> {counter} </div>
+                <div><Button onClick={decrementCounter}>-</Button></div>
+                </div>
+
+
+            </div>
+          ) )
+         }
+         <hr></hr>
+         
+         <h3>Total Bill: Rs. {sum}</h3>
+         
+         <Stripe total={totalPrice} seller = {seller_mail} user={user} products = {theArray} />
+        </Offcanvas.Body>
+      </Offcanvas>
          
            
       

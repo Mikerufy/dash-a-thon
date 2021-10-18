@@ -7,8 +7,7 @@ import disc from "./discord (8).png"
 import instagram from "./instagram (7).png"
 import {Box,Grid} from '@mui/material';
 import Roadmap from './Roadmap/Roadmap';
-
-
+import sanju from "./nnew1331.jpg"
 
 
 
@@ -21,17 +20,37 @@ function PickASide({user}) {
         <Grid style={{textAlign:'right'}}  item xs={12} md={3}>
         <div className="side__option">
                     <div>
-                    <h2>Buyer</h2>
+                    <h2 style={{color:'white'}} >Buyer</h2>
                     <hr></hr>
                     </div>
                     <div>
-                        <p>
-                            BLAH BLAH BLAH
-                        </p>
+                        <ul style={{textAlign:'left'}}>
+                        <li  style={{color:'white'}}>
+                        Browse through a wide range of products!
+
+
+
+                        </li>
+                        <li  style={{color:'white'}}>
+                        Get the best products from shops around you!
+          
+                        </li>
+                        <li  style={{color:'white'}}>
+
+                        Chat with us to clear your doubts!
+                        </li>
+                        <li  style={{color:'white'}}>
+
+
+                        Easy payment methods!
+                         </li>
+                        </ul>
                     </div>
                     <div>
                       
-                        <Button component={Link} to={{
+                        <Button
+                        style={{backgroundColor:'rgb(131,0,0)',color:'white'}}
+                         component={Link} to={{
                             pathname:'/sign-up-page',
                             state: { person: "buyer" }
                             }} variant="contained" >Continue</Button>
@@ -50,17 +69,29 @@ function PickASide({user}) {
         <Grid style={{textAlign:'right'}}  item xs={12} md={3}>
         <div className="side__option">
             <div>
-                    <h2>Seller</h2>
+                    <h2  style={{color:'white'}}>Seller</h2>
                     <hr></hr>
                     </div>
-                    <div>
-                        <p>
-                            BLAH BLAH BLAH
-                        </p>
-                    </div>
+                    <ul style={{textAlign:'left'}}>
+                        <li  style={{color:'white'}}>
+                        Get notified when someone buys from you
+
+                        </li>
+                        <li  style={{color:'white'}}>
+        
+                        Get the average rating of similar businesses around you 
+          
+                        </li>
+                        <li  style={{color:'white'}}>
+
+                        Predict your rating
+                        </li>
+                        </ul>
                     <div>
                    
-                    <Button component={Link} to={{
+                    <Button 
+                     style={{backgroundColor:'rgb(131,0,0)',color:'white'}}
+                    component={Link} to={{
                             pathname:'/sign-up-page',
                             state: { person: "seller" }
                             }} variant="contained" >Continue</Button>
@@ -81,10 +112,10 @@ function PickASide({user}) {
                 <Box sx={{ flexGrow: 1 }}>
                 <Grid style={{textAlign:'center'}} container justifyContent="space-between"  alignItems="center" spacing={2}>
                 <Grid style={{textAlign:'center'}}  item xs={12} md={12}>
-                    <img width="60%" height="60%" style={{borderRadius:'50%'}} src='https://pbs.twimg.com/profile_images/795980094699347972/_jVxLC90.jpg' alt=""/>
+                    <img  style={{width:'300px',height:'300px' }} src='https://cdn.discordapp.com/attachments/854765906059722762/899746745108545546/unknown.png' alt=""/>
                 </Grid>
                 <Grid style={{textAlign:'center'}}  item xs={12} md={12}>
-                    <h1>BAPAT</h1>
+                    <h1>SANJU</h1>
                 </Grid>
                 <Grid style={{textAlign:'center'}}  item xs={12} md={12}>
                    <h2> CEO</h2>
@@ -103,7 +134,7 @@ function PickASide({user}) {
                 <Box sx={{ flexGrow: 1 }}>
                 <Grid style={{textAlign:'center'}} container justifyContent="space-between"  alignItems="center" spacing={2}>
                 <Grid style={{textAlign:'center'}}  item xs={12} md={12}>
-                    <img width="60%" height="60%" style={{borderRadius:'50%'}} src='https://pbs.twimg.com/profile_images/795980094699347972/_jVxLC90.jpg' alt=""/>
+                    <img  style={{width:'300px',height:'300px'}} src='https://cdn.discordapp.com/attachments/854765906059722762/899743421508513832/profile.jpg' alt=""/>
                 </Grid>
                 <Grid style={{textAlign:'center'}}  item xs={12} md={12}>
                     <h1>ISHA</h1>
@@ -125,7 +156,7 @@ function PickASide({user}) {
                 <Box sx={{ flexGrow: 1 }}>
                 <Grid style={{textAlign:'center'}} container justifyContent="space-between"  alignItems="center" spacing={2}>
                 <Grid style={{textAlign:'center'}}  item xs={12} md={12}>
-                    <img width="60%" height="60%" style={{borderRadius:'50%'}} src='https://pbs.twimg.com/profile_images/795980094699347972/_jVxLC90.jpg' alt=""/>
+                    <img  style={{width:'300px',height:'300px'}} src='https://media-exp1.licdn.com/dms/image/C5603AQGajRBQftAReg/profile-displayphoto-shrink_800_800/0/1614345713690?e=1640217600&v=beta&t=OOyPCDtY9cjXksNhPzsmLtKWKyaMrIO2G25Fd8vRd_Y' alt=""/>
                 </Grid>
                 <Grid style={{textAlign:'center'}}  item xs={12} md={12}>
                     <h1>JAY</h1>

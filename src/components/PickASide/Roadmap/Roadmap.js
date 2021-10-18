@@ -25,7 +25,7 @@ function Roadmap() {
     iconStyle={{ background: 'rgb(131,0,0)', color: '#fff' }}
   
   >
-    <h3 className="vertical-timeline-element-title">ADD REMOVE PRODUCTS</h3>
+    <h3 className="vertical-timeline-element-title">If you are a Buyer, browse and add products to your cart</h3>
 
     <p>
     -----------------------------------------
@@ -37,7 +37,31 @@ function Roadmap() {
     iconStyle={{ background: 'rgb(131,0,0)', color: '#fff' }}
   
   >
-    <h3 className="vertical-timeline-element-title">If Buyer , your new shop rating will be predicted</h3>
+    <h3 className="vertical-timeline-element-title">Proceed to pay</h3>
+
+    <p>
+    -----------------------------------------
+    </p>
+  </VerticalTimelineElement>
+  <VerticalTimelineElement
+    className="vertical-timeline-element--work"
+    contentStyle={{ background: 'rgb(131,0,0)', color: '#fff' }}
+    iconStyle={{ background: 'rgb(131,0,0)', color: '#fff' }}
+  
+  >
+    <h3 className="vertical-timeline-element-title">If you are a Seller, add products to your shop</h3>
+
+    <p>
+-----------------------------
+    </p>
+  </VerticalTimelineElement>
+  <VerticalTimelineElement
+    className="vertical-timeline-element--work"
+    contentStyle={{ background: 'rgb(131,0,0)', color: '#fff' }}
+    iconStyle={{ background: 'rgb(131,0,0)', color: '#fff' }}
+  
+  >
+    <h3 className="vertical-timeline-element-title">Predict your rating or get average rating of shops around you</h3>
 
     <p>
 -----------------------------

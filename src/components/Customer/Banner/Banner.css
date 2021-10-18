@@ -34,3 +34,15 @@ p {
   flex: 0 0 50%;
   max-width: 50%;
 }
+.introduction__btns{
+  
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+.p1__bg{
+position: relative;
+
+color: #000;
+
+border-radius: 0px 0px 20px 20px;
+}

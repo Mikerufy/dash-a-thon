@@ -10,44 +10,37 @@ function Banner() {
         src="https://wallpaperaccess.com/full/2593108.png"
         /> */}
             {/* <img className="banner__img" src={banner} alt=""/> */}
-            <Box  sx={{ flexGrow: 1 }}>
+            {/* <Box  sx={{ flexGrow: 1 }}>
       <Grid container  flexDirection="row-reverse" alignItems="center" spacing={2}>
 
         <Grid style={{textAlign:'left'}} item xs={12} md={5}>
-            <img src={discount} alt=""/>
+            
         </Grid>
         
         <Grid style={{paddingLeft:'10rem'}}  item xs={12} md={6}>
             
             <Grid  item xs={12} md={5}>
             <Grid container alignItems="center" spacing={2}>
-            <Grid  item xs={12} md={10}>
+            <Grid  item xs={12} md={12}>
             <div  className="introduction__text">
                     <h1 style={{color:'#000'}}>
-                    Lets Vyaapaar!
+                   WELCOME
                     </h1>
             </div>
             </Grid>
-            <Grid style={{textAlign:'left'}} item xs={12} md={10}>
-            <p>
-                    SOME DESCRIPTION
-                    </p>
+            <Grid style={{textAlign:'left'}} item xs={12} md={12}>
+            <ul>
+                <li> Browse through a wide range of products!</li>
+                <li>Get the best products from shops around you! </li>
+                <li> Chat with us to clear your doubts!</li>
+                <li>Easy payment methods! </li>
+       
+            </ul>
             </Grid>
     
             <Grid style={{textAlign:'left'}} item xs={12} md={10}>
             <div   className="introduction__btns">
-    
-                {/* <Button
-                     style={{
-                        color:'#ffffff',
-                        backgroundColor:'rgb(131,0,0)',
-                        borderRadius:'40px',
-                        padding:'1rem',
-                        width: 180,
-                        height: 50,
-                
-                    }}
-                     variant=" contained" size="large">VIEW OFFERS</Button> */}
+
     
                 
                 </div>
@@ -61,8 +54,59 @@ function Banner() {
             </Grid>
             <Grid item xs={0} md={1}>
             </Grid>
+        </Grid>-
+        </Box> */}
+         <div >
+        <Box style={{marginTop:'8rem'}}  sx={{ flexGrow: 1 }}>
+      <Grid flexDirection="row-reverse" container  alignItems="center" spacing={2}>
+        <Grid item xs={12} md={6}>
+     
+        <div id="home" className="introduction__img" >
+                {/* <Player>
+            <source  src={gif} />
+            </Player> */}
+     <div><img width="150%" height="150%" src={discount} alt=""/></div>
+            
+            </div>
+       
         </Grid>
-        </Box>
+        <Grid className="p1__bg" style={{display:'flex',justifyContent:'space-evenly'}} item xs={12} md={6}>
+       
+        <div  className="introduction__text">
+                <h1 style={{color:'white',width:'100%'}} >
+                Welcome to Vyaapaar
+                </h1>
+           
+            <div  className="introduction__btns">
+            <Box sx={{ flexGrow: 1 }}>
+          <Grid justifyContent="space-between"  container spacing={2}>
+           <Grid item xs={12} md={12}>
+           {/* <ul >
+                <li style={{color:'white'}}> Browse through a wide range of products!</li>
+                <li style={{color:'white'}}>Get the best products from shops around you! </li>
+                <li style={{color:'white'}}> Chat with us to clear your doubts!</li>
+                <li style={{color:'white'}}>Easy payment methods! </li>
+       
+            </ul> */}
+            <h3>WE SERVE HAPPINESS!</h3>
+
+            </Grid>
+
+            </Grid>
+            </Box>
+                
+
+               
+
+            </div>
+            
+            </div>
+          
+        </Grid>
+        </Grid>
+    </Box>
+</div>
+
     </>)
 }
 
