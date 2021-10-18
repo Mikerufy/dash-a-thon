@@ -4,7 +4,7 @@ const { spawn,exec } = require("child_process");
 const func = (cusine,x,y)=>{
   return new Promise((resolve, reject) => {
   exec(
-    `cd D:\\Vyaapaar\\dash-a-thon\\node\\src\\controllers && python Average_rating.py ${cusine} ${x} ${y}`,
+    `cd F:\\Tsec-Sem-5\\MP4\\dash-a-thon\\node\\src\\controllers && python Average_rating.py ${cusine} ${x} ${y}`,
     (error, stdout, stderr) => {
       if (error) reject({error,stderr});
       if (stderr) reject(stderr);
@@ -17,7 +17,7 @@ const func = (cusine,x,y)=>{
 const predictfunc = (cost, book, delivery, prange)=>{
   return new Promise((resolve, reject) => {
   exec(
-    `cd D:\\Vyaapaar\\dash-a-thon\\node\\src\\controllers && python Predict_rating.py ${cost} ${book} ${delivery} ${prange}`,
+    `cd F:\\Tsec-Sem-5\\MP4\\dash-a-thon\\node\\src\\controllers && python Predict_rating.py ${cost} ${book} ${delivery} ${prange}`,
     (error, stdout, stderr) => {
       if (error) reject({error,stderr});
       if (stderr) reject(stderr);
