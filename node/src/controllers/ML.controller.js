@@ -4,7 +4,7 @@ const { spawn,exec } = require("child_process");
 const func = (cusine,x,y)=>{
   return new Promise((resolve, reject) => {
   exec(
-    `cd C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers && python C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers\\Average_rating.py ${cusine} ${x} ${y}`,
+    `cd F:\\Tsec-Sem-5\\MP4\\dash-a-thon\\node\\src\\controllers && python Average_rating.py ${cusine} ${x} ${y}`,
     (error, stdout, stderr) => {
       if (error) reject({error,stderr});
       if (stderr) reject(stderr);
@@ -17,7 +17,7 @@ const func = (cusine,x,y)=>{
 const predictfunc = ()=>{
   return new Promise((resolve, reject) => {
   exec(
-    `cd C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers && python Predict_rating.py 500 0 1 1000`,
+    `cd F:\\Tsec-Sem-5\\MP4\\dash-a-thon\\node\\src\\controllers && python Predict_rating.py 500 0 1 1000`,
     (error, stdout, stderr) => {
       if (error) reject({error,stderr});
       if (stderr) reject(stderr);
@@ -40,9 +40,9 @@ module.exports = {
   predict: (req, res) => {
     errorHandler(req, res, async () => {
       var dataToSend = "";
-      // var {cost, book, delivery, prange} = req.body;
+      var {cost, book, delivery, prange} = req.body;
     dataToSend += await predictfunc();
-    console.log(dataToSend)
+    // console.log(dataToSend)
     res.status(200).json(dataToSend)
     });
   },

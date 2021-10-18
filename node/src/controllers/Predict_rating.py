@@ -12,7 +12,7 @@ cost = int(cost)
 book = int(book)
 delivery = int(delivery)
 prange = int(prange)
-print(cost)
+# print(cost)
 
 
 def cuisine_counter(inpStr):
@@ -79,7 +79,9 @@ def Predict_rating():
     RF = RegModel.fit(X_train, y_train)
     # print(RF.score(X_test, y_test))
     y_pred2 = RF.predict([[100, cost, book, delivery, prange]])
-    print(str(y_pred2[0]))
-
+    ans = y_pred2[0]
+    ans = str(ans)
+    print(ans)
 
 Predict_rating()
+print("hello")
