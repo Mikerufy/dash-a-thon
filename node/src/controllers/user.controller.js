@@ -13,9 +13,7 @@ module.exports = {
   registerUser: (req, res) => {
     errorHandler(req, res, async () => {
       const newUser = await User.create({ ...req.body });
-      res
-        .status(201)
-        .json({ message: "success", user: { ...newUser, password: null } });
+      res.status(201).json({ message: "success", user: { ...newUser, password: null } });
     });
   },
   login: (req, res) => {
@@ -102,6 +100,26 @@ module.exports = {
       const data = await Buyer_Data.find({email : req.body.email})
       res.status(200).json(data);
     }); 
+  },
+  addsellerproducts : (req,res)=>{
+    console.log(req.body)
+    const data=new Seller(req.body)
+    data.save().then((data)=>{
+        res.json(data)
+    }).catch((err)=>{
+        res.status(500).send(err.message)
+    })
+  },
+  getsellproducts : (req,res) =>{
+    errorHandler(req,res,async () => {
+      Seller.find((err,data)=>{
+        if(err){
+          console.log(err)
+        }else{
+          
+          res.status(200).json(data);
+        }
+      })
+    })
   }
-  
 };

@@ -6,7 +6,7 @@ const cell_schema = new Schema(
     {
         productName : String,
         productType : String,
-        price : Number,
+        price : String,
         imgUrl : String
     }
 )
@@ -14,7 +14,6 @@ const cell_schema = new Schema(
 const Seller_Schema = new Schema(
     {
         email : String,
-        buyer_email : String,
         product : [[cell_schema]]
     }
 )
