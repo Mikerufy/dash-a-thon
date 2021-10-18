@@ -41,8 +41,17 @@ function ProductForm() {
     const onSubmit = async (data) => 
     {
 
-        console.log(data.imgUrl)
-        await addProductForm(data)
+        console.log(data.imgUrl);
+       fetch('http://localhost:5000/api/user/addProduct',{
+        method:'POST',
+        headers:{
+            "Accept":"application/json",
+            "Content-Type":"application/json",
+          
+        },
+        body:JSON.stringify(data)
+})
+
         setAlert(true)
 
     }

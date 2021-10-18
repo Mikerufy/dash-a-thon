@@ -163,7 +163,7 @@ function SearchedProducts({products}) {
                   />
               </IconButton>
           </div>
-            </Typography>
+            </Typography>/;
           </CardContent>
   
         </CardActionArea>

@@ -93,7 +93,7 @@ function App() {
             <Route exact path="/sign-up-page" ><Signup/></Route>
             <Route exact path="/landing" ><Landing/></Route>
             <Route exact path="/dashboard/user/analytics" >{user ? <Analytics user={user} /> : <Redirect to="/login" />}</Route>
-            <Route exact path="/dashboard/user/add-product" >{user ? <Addproduct user={user} /> : <Redirect to="/login" />}</Route>
+            <Route exact path="/dashboard/user/add-product" >{user ? <Addproduct products = {products} user={user} /> : <Redirect to="/login" />}</Route>
             <Route exact path="/dashboard/customer" >{user ? <CustomerPage user={user} products = {products} /> : <Redirect to="/login" />}</Route>
             <Route exact path="/dashboard/customer/searched-products" >
               <SearchedProducts products={products} />

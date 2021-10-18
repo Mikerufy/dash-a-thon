@@ -17,7 +17,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Geocoder from 'react-map-gl-geocoder'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import { averageRating, getAverageRating } from '../../../API';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -67,15 +68,61 @@ const [deliv,setDeliv]=useState('')
 const [range,setRange]=useState('')
 const [rating,setRating]=useState('')
 
+const [predict,setPredict]=useState('')
 const handleCalculate=async()=>{
-  alert("pressed")
-  await averageRating({
-    "cusine":cuisine,
-    "x":userLoc[1],
-    "y":userLoc[0]
+ 
+ fetch('http://localhost:5000/api/ml/rating',{
+    method:'POST',
+    credentials: "include",
+    mode: "cors",
+    headers:{
+        "Accept":"application/json",
+        "Content-Type":"application/json",
+       
+    },
+    body:JSON.stringify(
+      {
+        "cusine":cuisine,
+        "x":userLoc[1],
+        "y":userLoc[0]
+      }
+    ),
   })
-  setRating(await getAverageRating())
+  .then(res=>res.json())
+  .then((data) => {
+    setRating(data);
+ 
+  });
+
   }
+
+const handleCalculate2=async()=>{
+ 
+   fetch('http://localhost:5000/api/ml/predict',{
+      method:'POST',
+      credentials: "include",
+      mode: "cors",
+      headers:{
+          "Accept":"application/json",
+          "Content-Type":"application/json",
+         
+      },
+      body:JSON.stringify(
+        {
+          "cost":avgCost,
+          "book":booking,
+          "delivery":deliv,
+          "prange":range
+        }
+      ),
+    })
+    .then(res=>res.json())
+    .then((data) => {
+      setPredict(data);
+      console.log(data)
+    });
+  
+    }
 const geolocateControlStyle= {
   right: 15,
   top: 10
@@ -162,7 +209,7 @@ const MAPBOX_TOKEN =
         </Grid>
 
         <Grid item xs={12} md={6}>
-        {rating}
+       {rating ? rating : <div>Please wait for few seconds after clicking</div>}
         </Grid>
         <Grid item xs={12} md={6}>
         <Button onClick={handleCalculate} variant="contained" style={{backgroundColor:'rgb(131,0,0)',color:'white'}}>
@@ -229,11 +276,11 @@ const MAPBOX_TOKEN =
         </Grid>
 
         <Grid item xs={12} md={6}>
-
+        {predict ? predict : <div>Please wait for few seconds after clicking</div>}
   
         </Grid>
         <Grid item xs={12} md={6}>
-        <Button variant="contained" style={{backgroundColor:'rgb(131,0,0)',color:'white'}}>
+        <Button variant="contained" onClick={handleCalculate2} style={{backgroundColor:'rgb(131,0,0)',color:'white'}}>
           Calculate
         </Button>
           </Grid>

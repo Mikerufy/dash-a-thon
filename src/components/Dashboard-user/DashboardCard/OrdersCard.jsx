@@ -36,8 +36,8 @@ export default function OrdersCard() {
   return (<>
 
   <Grid  container style={{padding:'4rem'}}  spacing={3}>
-  <Grid style={{textAlign:'center'}} item xs={12} md={6} >
-  <Grid justifyContent="space-evenly" container spacing={3}>
+  <Grid style={{paddingLeft:'1.5rem'}} item xs={12} md={6} >
+  <Grid  container spacing={3}>
   <Card style={{ display: 'flex' }}>
     <Grid item xs={12} md={6} >
       <div>
@@ -61,8 +61,8 @@ export default function OrdersCard() {
 
   </Grid>
   </Grid>
-  <Grid  item xs={12} md={6} >
-  <Grid container spacing={3}>
+  <Grid style={{paddingLeft:'1.5rem'}} item xs={12} md={6} >
+  <Grid  container spacing={3}>
   <Card style={{ display: 'flex' }}>
     <Grid item xs={12} md={6} >
       <div >

@@ -29,7 +29,8 @@ export const getProductForm =()=>fetch('http://localhost:5000/user/get-product')
 // export const getCart =()=>fetch('http://localhost:5000/customer/cart')
 // .then(res=>res.json());
 
-export const averageRating =(prod)=>fetch('http://localhost:5000/api/ml/rating',{
+export const averageRating =(prod)=>
+fetch('http://localhost:5000/api/ml/rating',{
     method:'POST',
     headers:{
         "Accept":"application/json",

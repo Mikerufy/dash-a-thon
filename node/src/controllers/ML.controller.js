@@ -1,3 +1,4 @@
+
 const { errorHandler } = require("../utils/errorHandler");
 const { spawn,exec } = require("child_process");
 
@@ -18,7 +19,6 @@ const predictfunc = (cost, book, delivery, prange)=>{
   return new Promise((resolve, reject) => {
   exec(
     `cd C:\\Users\\LENOVO\\Desktop\\JAYFOLDERS\\JAY\\JavaScript\\React\\Dhanda\\dhanda\\node\\src\\controllers && python Predict_rating.py ${cost} ${book} ${delivery} ${prange}`,
-     console.log("aparams",cost),
     (error, stdout, stderr) => {
       if (error) reject({error,stderr});
       if (stderr) reject(stderr);
@@ -41,12 +41,15 @@ module.exports = {
   predict: (req, res) => {
     errorHandler(req, res, async () => {
       var dataToSend = "";
+      var {cost, book, delivery, prange} = req.body;
+      dataToSend += await predictfunc(cost, book, delivery, prange);
+    console.log(dataToSend)
       console.log(req.body)
-      var data =req.body;
+      // var data =req.body;
       // console.log(data)
       // console.log(cost)
-    dataToSend += await predictfunc(data.cost, data.book, data.delivery, data.prange);
-    console.log(dataToSend)
+    
+    // console.log(dataToSend)
     res.status(200).json(dataToSend)
     });
   },
