@@ -17,7 +17,7 @@ function IndividualCard({products,user}) {
   const [theArray, setTheArray] = useState([]);
   const [show, setShow] = useState(false);
   const [seller_mail,setSeller_mail] = useState("");
-    const [totalPrice,setTotalPrice]=useState([])
+    const [totalPrice,setTotalPrice]=useState(0)
     const handleClose = () => setShow(false);
 
     const [counter, setCounter] = useState(1);
@@ -25,12 +25,12 @@ function IndividualCard({products,user}) {
     let decrementCounter = () => setCounter(counter - 1);
     const sum = 12131
   const handleShow =  (newElement,mail) =>{ 
-   
+    console.log(newElement.price)
     setSeller_mail(mail)
     
 
     setTheArray(old=>[...old,newElement]);
-    setTotalPrice(old=>[...old,newElement.price]);
+    setTotalPrice(totalPrice + parseInt(newElement.price));
    
     setTimeout(()=>{
      setShow(true);
@@ -57,7 +57,11 @@ function IndividualCard({products,user}) {
       
       }));
     const classes = useStyles();
-    // console.log(products)
+    // var array = [1, 2, 3, 4, 5];
+    // var sum = array.reduce(function(a, b){
+    //     return a + b;
+    // }, 0);
+
     return (<>
               {
                 products.map((prod)=>(
@@ -164,7 +168,7 @@ function IndividualCard({products,user}) {
          }
          <hr></hr>
          
-         <h3>Total Bill: Rs. {sum}</h3>
+         <h3>Total Bill: Rs. {totalPrice}</h3>
          
          <Stripe total={totalPrice} seller = {seller_mail} user={user} products = {theArray} />
         </Offcanvas.Body>

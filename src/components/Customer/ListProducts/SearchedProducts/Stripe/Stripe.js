@@ -18,6 +18,7 @@ function Stripe({ total, seller, user, products }) {
     products.map((prod)=>{
       settoAdd(old=>[...old,prod.productName]);
     })
+    
     // fetch("http://localhost:5000/api/user/addbuyer", {
     //   method: "POST",
     //   credentials: "include",
@@ -77,11 +78,14 @@ function Stripe({ total, seller, user, products }) {
         name="Cart"
         billingAddress
         shippingAddress
+        currency="INR"
         alipay
         bitcoin
         image="https://previews.123rf.com/images/marvinjk/marvinjk1604/marvinjk160400047/57411620-payment-methods-money-transfer-financial-transaction-banking-vector-concept.jpg"
       >
-    <button className="btn" onClick={()=>{
+    <button className="btn"
+    style={{backgroundColor:'rgb(131,0,0)',color:'white'}}
+     onClick={()=>{
       fetch("http://localhost:5000/api/user/addbuyer", {
           method: "POST",
           credentials: "include",
@@ -116,7 +120,7 @@ function Stripe({ total, seller, user, products }) {
           .then((data) => {
             console.log(data);
           });
-    }}>PAYY</button>
+    }}>PAY</button>
         </StripeCheckout>
     </div>
   );

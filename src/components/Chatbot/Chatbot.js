@@ -248,7 +248,7 @@ setQuery('')
                    
                     <br></br>
                     <Typography variant="h5" component="h5" color="white">
-                      Hi {user.who}!
+                      Hi USER!
                     </Typography>
                   </div>
 

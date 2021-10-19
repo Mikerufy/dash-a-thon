@@ -73,7 +73,7 @@ export default function TableOrder({user}) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Customer</StyledTableCell>
-            <StyledTableCell align="right">Due date</StyledTableCell>
+            <StyledTableCell align="right">Order</StyledTableCell>
            
           
            
